@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auth\Auth.csproj" />
+    <ProjectReference Include="..\Cache\Cache.csproj" />
+    <ProjectReference Include="..\Config\Config.csproj" />
+    <ProjectReference Include="..\Database\Old.Data.csproj" />
+    <ProjectReference Include="..\Log\Log.csproj" />
+    <ProjectReference Include="..\Mapper\Mapper.csproj" />
+    <ProjectReference Include="..\Module\Module.csproj" />
+    <ProjectReference Include="..\MQ\MQ.csproj" />
+    <ProjectReference Include="..\Swagger\Swagger.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
+  </ItemGroup>
+
+</Project>
