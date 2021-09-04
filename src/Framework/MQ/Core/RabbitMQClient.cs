@@ -6,58 +6,58 @@ using RabbitMQ.Client.Events;
 
 using Wyn.MQ.Abstractions;
 using Wyn.MQ.Constant;
+using Wyn.MQ.Options;
 using Wyn.Utils.Extensions;
 using Wyn.Utils.Helpers;
 
 namespace Wyn.MQ.Core
 {
-    // ReSharper disable once InconsistentNaming
     /// <summary>
     /// RabbitMQ客户端
     /// </summary>
     public class RabbitMQClient : IDisposable
     {
-        //发送连接
+        // 发送连接
         private IConnection _sendConnection;
 
-        //接收连接
+        // 接收连接
         private IConnection _receiveConnection;
 
-        private readonly RabbitMQConfig _config;
+        private readonly RabbitMQOptions _options;
 
-        public RabbitMQClient(RabbitMQConfig config)
+        public RabbitMQClient(RabbitMQOptions options)
         {
-            _config = config;
+            _options = options;
 
             CreateConnection();
         }
 
         internal void CreateConnection()
         {
-            if (_config.UserName.IsNull())
+            if (_options.UserName.IsNull())
                 throw new ArgumentNullException("用户名不能为空","用户名不能为空");
 
-            if (_config.Password.IsNull())
+            if (_options.Password.IsNull())
                 throw new ArgumentNullException("密码不能为空", "密码不能为空");
 
-            if (_config.HostName.IsNull())
-                _config.HostName = "localhost";
+            if (_options.HostName.IsNull())
+                _options.HostName = "localhost";
 
-            if (_config.Port < 1 || _config.Port > 65535)
-                _config.Port = 5672;
+            if (_options.Port < 1 || _options.Port > 65535)
+                _options.Port = 5672;
 
             var factory = new ConnectionFactory
             {
-                HostName = _config.HostName,
-                Port = _config.Port,
-                UserName = _config.UserName,
-                Password = _config.Password,
+                HostName = _options.HostName,
+                Port = _options.Port,
+                UserName = _options.UserName,
+                Password = _options.Password,
                 AutomaticRecoveryEnabled = true,
                 NetworkRecoveryInterval = TimeSpan.FromSeconds(10)
             };
 
-            if (_config.VirtualHost.NotNull())
-                factory.VirtualHost = _config.VirtualHost;
+            if (_options.VirtualHost.NotNull())
+                factory.VirtualHost = _options.VirtualHost;
 
             _sendConnection = factory.CreateConnection();
 
@@ -159,7 +159,7 @@ namespace Wyn.MQ.Core
 
         private string GetQueueName(string queue)
         {
-            return _config.Prefix.NotNull() ? $"{_config.Prefix}.{queue}" : queue;
+            return _options.Prefix.NotNull() ? $"{_options.Prefix}.{queue}" : queue;
         }
 
         private RabbitMQDeclareSettings GetSettings(RabbitMQDeclareSettings settings)

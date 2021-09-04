@@ -10,12 +10,10 @@ namespace Wyn.Module.Abstractions
     public interface IModuleServicesConfigurator
     {
         /// <summary>
-        /// 配置
+        /// 注入服务
         /// </summary>
-        /// <param name="services">服务集合</param>
-        /// <param name="modules">模块列表</param>
-        /// <param name="env">环境变量</param>
-        /// <param name="cfg"></param>
-        void Configure(IServiceCollection services, IModuleCollection modules, IHostEnvironment env, IConfiguration cfg);
+        /// <param name="services"></param>
+        /// <param name="environment"></param>
+        void Configure(IServiceCollection services, IHostEnvironment environment);
     }
 }

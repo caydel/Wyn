@@ -1,7 +1,9 @@
 using System;
 using System.Reflection;
+
 using Microsoft.Extensions.DependencyInjection;
-using Wyn.Data.Abstractions.Options;
+
+using Wyn.Data.Options;
 
 namespace Wyn.Data.Abstractions
 {

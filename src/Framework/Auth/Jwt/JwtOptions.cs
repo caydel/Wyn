@@ -1,4 +1,4 @@
-﻿namespace Mkh.Auth.Jwt
+﻿namespace Wyn.Auth.Jwt
 {
     /// <summary>
     /// Jwt配置项

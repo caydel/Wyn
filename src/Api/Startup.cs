@@ -1,13 +1,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-using Wyn.Host.Abstractions;
-
 namespace Api
 {
-    public class Startup : StartupAbstract
+    public class Startup
     {
-        public Startup(IHostEnvironment env, IConfiguration cfg) : base(env, cfg)
+        public Startup(IHostEnvironment env, IConfiguration cfg) 
         {
         }
     }

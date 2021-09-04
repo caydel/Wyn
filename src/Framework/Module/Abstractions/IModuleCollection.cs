@@ -1,18 +1,34 @@
 ﻿using System.Collections.Generic;
 
-using Wyn.Module.Abstractions;
+using Microsoft.Extensions.Hosting;
 
-namespace Wyn.Module
+using Wyn.Module.Descriptor;
+
+namespace Wyn.Module.Abstractions
 {
-
     /// <summary>
     /// 模块集合
     /// </summary>
-    public interface IModuleCollection : IList<IModuleDescriptor>
+    public interface IModuleCollection : IList<ModuleDescriptor>
     {
         /// <summary>
-        /// 加载
+        /// 环境
         /// </summary>
-        void Load();
+        public IHostEnvironment HostEnvironment { get; }
+
+        /// <summary>
+        /// 根据模块编号获取模块信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        ModuleDescriptor Get(int id);
+
+        /// <summary>
+        /// 根据模块编码获取模块信息
+        /// <para>不区分大小写</para>
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        ModuleDescriptor Get(string code);
     }
 }

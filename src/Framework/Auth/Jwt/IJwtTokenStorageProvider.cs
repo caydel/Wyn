@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Mkh.Auth.Jwt
+namespace Wyn.Auth.Jwt
 {
     /// <summary>
     /// JWT令牌存储提供器

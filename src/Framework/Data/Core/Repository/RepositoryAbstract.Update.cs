@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
+
 using Wyn.Data.Abstractions;
+using Wyn.Utils.Helpers;
 
 namespace Wyn.Data.Core.Repository
 {
@@ -17,7 +19,7 @@ namespace Wyn.Data.Core.Repository
 
         protected async Task<bool> UpdateAsync(TEntity entity, string tableName, IUnitOfWork uow = null)
         {
-            Check.NotNull(entity, nameof(entity));
+            GenericHelper.NotNull(entity, nameof(entity));
 
             SetUpdateInfo(entity);
 

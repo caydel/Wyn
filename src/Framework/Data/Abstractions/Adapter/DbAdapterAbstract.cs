@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 
 using Wyn.Data.Abstractions.Descriptors;
-using Wyn.Data.Abstractions.Options;
+using Wyn.Data.Options;
 using Wyn.Utils.Helpers;
 
 namespace Wyn.Data.Abstractions.Adapter

@@ -3,8 +3,13 @@ using System.Linq;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Wyn.Cache.Abstractions;
+using Wyn.Cache.Abstractions.MemoryCache;
+using Wyn.Cache.Core;
+using Wyn.Cache.Options;
+using Wyn.Cache.Redis;
 using Wyn.Utils.Extensions;
 using Wyn.Utils.Helpers;
 
@@ -16,32 +21,33 @@ namespace Wyn.Cache
         /// 添加缓存
         /// </summary>
         /// <param name="services"></param>
+        /// <returns></returns>
+        public static CacheBuilder AddCache(this IServiceCollection services)
+        {
+            services.AddSingleton<ICacheHandler, MemoryCacheHandler>();
+
+            return new CacheBuilder { Services = services };
+        }
+
+        /// <summary>
+        /// 添加Redis缓存
+        /// </summary>
+        /// <param name="builder"></param>
         /// <param name="cfg"></param>
         /// <returns></returns>
-        public static IServiceCollection AddCache(this IServiceCollection services, IConfiguration cfg)
+        public static CacheBuilder UseRedis(this CacheBuilder builder, IConfiguration cfg)
         {
-            var config = new CacheConfig();
-            var section = cfg.GetSection("Cache");
-            section?.Bind(config);
+            var services = builder.Services;
 
-            services.AddSingleton(config);
+            services.Configure<RedisOptions>(cfg.GetSection("Mkh:Cache:Redis"));
 
-            // var assembly = AssemblyHelper.LoadByNameEndString($".Cache.{config.Provider.ToString()}");
-            var assembly = AssemblyHelper.LoadByNameEndString($".Cache");
+            services.TryAddSingleton<IRedisSerializer, DefaultRedisSerializer>();
 
-            if (!assembly.NotNull())
-            {
-                throw new ArgumentNullException($"缓存实现程序集({config.Provider})未找到",
-                   $"缓存实现程序集({config.Provider})未找到");
-            }
+            services.AddSingleton<RedisHelper>();
 
-            var handlerType = assembly.GetTypes().FirstOrDefault(m => typeof(ICacheHandler).IsAssignableFrom(m));
-            if (handlerType != null)
-            {
-                services.AddSingleton(typeof(ICacheHandler), handlerType);
-            }
+            services.AddSingleton<ICacheHandler, RedisCacheHandler>();
 
-            return services;
+            return builder;
         }
     }
 }

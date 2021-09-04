@@ -1,9 +1,9 @@
-﻿namespace Wyn.MQ.Abstractions
+﻿namespace Wyn.MQ.Options
 {
     /// <summary>
     /// 配置项
     /// </summary>
-    public class RabbitMQConfig
+    public class RabbitMQOptions
     {
         /// <summary>
         /// 主机名

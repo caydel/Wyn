@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mkh.Auth.Jwt
+namespace Wyn.Auth.Jwt
 {
     /// <summary>
     /// JWT返回模型

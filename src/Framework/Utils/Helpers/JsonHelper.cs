@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 using Wyn.Utils.Attributes;
+using Wyn.Utils.Extensions;
 
 namespace Wyn.Utils.Helpers
 {
@@ -58,11 +62,31 @@ namespace Wyn.Utils.Helpers
         /// <summary>
         /// 反序列化
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="json"></param>
+        /// <param name="type"></param>
         /// <returns></returns>
         public static object Deserialize(string json, Type type) => JsonConvert.DeserializeObject(json, type, _options);
 
+    }
+
+    /// <summary>
+    /// Json日期类型转换器
+    /// </summary>
+    public class DateTimeConverter : System.Text.Json.Serialization.JsonConverter<DateTime>
+    {
+        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            var json = reader.GetString();
+            if (json.IsNull())
+                return DateTime.MinValue;
+
+            return json.ToDateTime() == null ? DateTime.Now : (DateTime)json.ToDateTime();
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture));
+        }
     }
 
 }

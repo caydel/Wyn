@@ -3,8 +3,8 @@ using System.Data;
 using Wyn.Data.Abstractions.Adapter;
 using Wyn.Data.Abstractions.Descriptors;
 using Wyn.Data.Abstractions.Logger;
-using Wyn.Data.Abstractions.Options;
 using Wyn.Data.Abstractions.Schema;
+using Wyn.Data.Options;
 
 namespace Wyn.Data.Abstractions
 {

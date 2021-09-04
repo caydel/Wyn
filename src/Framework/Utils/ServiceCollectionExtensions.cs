@@ -117,7 +117,7 @@ namespace Wyn.Utils
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddNetModularServices(this IServiceCollection services)
+        public static IServiceCollection AddServicesFromAttribute(this IServiceCollection services)
         {
             var assemblies = AssemblyHelper.Load();
             foreach (var assembly in assemblies)

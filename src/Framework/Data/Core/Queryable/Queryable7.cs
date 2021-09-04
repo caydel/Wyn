@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Entities;
 using Wyn.Data.Abstractions.Pagination;
@@ -9,6 +10,9 @@ using Wyn.Data.Abstractions.Queryable;
 using Wyn.Data.Abstractions.Queryable.Grouping;
 using Wyn.Data.Core.Internal.QueryStructure;
 using Wyn.Data.Core.Queryable.Grouping;
+using Wyn.Utils.Extensions;
+using Wyn.Utils.Result;
+
 using IQueryable = Wyn.Data.Abstractions.Queryable.IQueryable;
 
 namespace Wyn.Data.Core.Queryable
@@ -36,7 +40,7 @@ namespace Wyn.Data.Core.Queryable
 
         }
 
-        #region ==Sort==
+        #region Sort
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> OrderBy(string field)
         {
@@ -64,7 +68,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Where==
+        #region Where
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> Where(Expression<Func<IQueryableJoins<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7>, bool>> expression)
         {
@@ -207,7 +211,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==SubQuery==
+        #region SubQuery
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> SubQueryEqual<TKey>(Expression<Func<IQueryableJoins<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7>, TKey>> key, IQueryable queryable)
         {
@@ -259,7 +263,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Limit==
+        #region Limit
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> Limit(int skip, int take)
         {
@@ -269,7 +273,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Select==
+        #region Select
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> Select<TResult>(Expression<Func<IQueryableJoins<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7>, TResult>> expression)
         {
@@ -291,7 +295,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Join==
+        #region Join
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7, TEntity8> LeftJoin<TEntity8>(Expression<Func<IQueryableJoins<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7, TEntity8>, bool>> onExpression, string tableName = null, bool noLock = true) where TEntity8 : IEntity, new()
         {
@@ -310,7 +314,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==List==
+        #region List
 
         public Task<IList<TEntity>> ToList()
         {
@@ -319,7 +323,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Pagination==
+        #region Pagination
 
         public Task<IList<TEntity>> ToPagination()
         {
@@ -338,7 +342,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==First==
+        #region First
 
         public Task<TEntity> ToFirst()
         {
@@ -347,7 +351,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==NotFilterSoftDeleted==
+        #region NotFilterSoftDeleted
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> NotFilterSoftDeleted()
         {
@@ -357,7 +361,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==NotFilterTenant==
+        #region NotFilterTenant
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> NotFilterTenant()
         {
@@ -367,7 +371,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Function==
+        #region Function
 
         public Task<TResult> ToMax<TResult>(Expression<Func<IQueryableJoins<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7>, TResult>> expression)
         {
@@ -391,7 +395,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==GroupBy==
+        #region GroupBy
 
         public IGroupingQueryable<TResult, TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> GroupBy<TResult>(Expression<Func<IQueryableJoins<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7>, TResult>> expression)
         {
@@ -400,7 +404,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Copy==
+        #region Copy
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> Copy()
         {
@@ -409,7 +413,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region ==Uow==
+        #region Uow
 
         public IQueryable<TEntity, TEntity2, TEntity3, TEntity4, TEntity5, TEntity6, TEntity7> UseUow(IUnitOfWork uow)
         {

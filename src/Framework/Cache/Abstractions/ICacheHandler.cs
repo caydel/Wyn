@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Wyn.Cache.Abstractions
 {
@@ -11,117 +12,75 @@ namespace Wyn.Cache.Abstractions
         /// 获取
         /// </summary>
         /// <param name="key">键</param>
-        /// <returns>值</returns>
-        string Get(string key);
+        /// <returns></returns>
+        Task<string> Get(string key);
 
         /// <summary>
         /// 获取
         /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <returns>值</returns>
-        T Get<T>(string key);
-
-        /// <summary>
-        /// 获取
-        /// </summary>
-        /// <param name="key">键</param>
-        /// <returns>值</returns>
-        Task<string> GetAsync(string key);
-
-        /// <summary>
-        /// 获取
-        /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <returns>值</returns>
-        Task<T> GetAsync<T>(string key);
-
-        /// <summary>
-        /// 尝试获取
-        /// </summary>
-        /// <param name="key">键</param>
-        /// <param name="value">值</param>
-        /// <returns>真或假</returns>
-        bool TryGetValue(string key, out string value);
-
-        /// <summary>
-        /// 尝试获取
-        /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <param name="value">值</param>
-        /// <returns>真或假</returns>
-        bool TryGetValue<T>(string key, out T value);
-
-        /// <summary>
-        /// 设置
-        /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <param name="value">值</param>
-        bool Set<T>(string key, T value);
-
-        /// <summary>
-        /// 设置
-        /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <param name="value">值</param>
-        /// <param name="expires">有效期(分钟)</param>
-        bool Set<T>(string key, T value, int expires);
-
-        /// <summary>
-        /// 设置
-        /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <param name="value">值</param>
-        /// <returns>真或假</returns>
-        Task<bool> SetAsync<T>(string key, T value);
-
-        /// <summary>
-        /// 设置
-        /// </summary>
-        /// <typeparam name="T">实体</typeparam>
-        /// <param name="key">键</param>
-        /// <param name="value">值</param>
-        /// <param name="expires">有效期(分钟)</param>
-        /// <returns>真或假</returns>
-        Task<bool> SetAsync<T>(string key, T value, int expires);
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="key">键</param>
-        bool Remove(string key);
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="key">键</param>
-        /// <returns>真或假</returns>
-        Task<bool> RemoveAsync(string key);
-
-        /// <summary>
-        /// 指定键是否存在
-        /// </summary>
-        /// <param name="key">键</param>
-        /// <returns>真或假</returns>
-        bool Exists(string key);
-
-        /// <summary>
-        /// 指定键是否存在
-        /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="key">键</param>
         /// <returns></returns>
-        Task<bool> ExistsAsync(string key);
+        Task<T> Get<T>(string key);
+
+        /// <summary>
+        /// 设置
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <returns></returns>
+        Task<bool> Set<T>(string key, T value);
+
+        /// <summary>
+        /// 设置
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="expires">有效期(分钟)</param>
+        /// <returns></returns>
+        Task<bool> Set<T>(string key, T value, int expires);
+
+        /// <summary>
+        /// 设置
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="expires">有效期，截止时间</param>
+        /// <returns></returns>
+        Task<bool> Set<T>(string key, T value, DateTime expires);
+
+        /// <summary>
+        /// 设置
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">键</param>
+        /// <param name="value">值</param>
+        /// <param name="expires">有效期，截止时间</param>
+        /// <returns></returns>
+        Task<bool> Set<T>(string key, T value, TimeSpan expires);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<bool> Remove(string key);
+
+        /// <summary>
+        /// 指定键是否存在
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<bool> Exists(string key);
 
         /// <summary>
         /// 删除指定前缀的缓存
         /// </summary>
-        /// <param name="prefix">前缀</param>
+        /// <param name="prefix"></param>
         /// <returns></returns>
-        Task RemoveByPrefixAsync(string prefix);
+        Task RemoveByPrefix(string prefix);
     }
 }

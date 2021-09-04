@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Logger;
-using Wyn.Data.Abstractions.Options;
 using Wyn.Data.Core;
 using Wyn.Data.Core.Internal;
+using Wyn.Data.Options;
 using Wyn.Utils.Helpers;
 
 namespace Microsoft.Extensions.DependencyInjection

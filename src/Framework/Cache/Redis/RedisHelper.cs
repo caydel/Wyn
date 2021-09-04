@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.Extensions.Options;
+
 using StackExchange.Redis;
 
 using Wyn.Cache.Abstractions;
+using Wyn.Cache.Options;
 using Wyn.Utils.Attributes;
 using Wyn.Utils.Extensions;
 
@@ -16,15 +19,16 @@ namespace Wyn.Cache.Redis
     {
         internal ConnectionMultiplexer _redis;
         internal string _prefix;
-        internal readonly RedisConfig _config;
+        internal readonly IOptionsMonitor<RedisOptions> _options;
         internal readonly IRedisSerializer _redisSerializer;
-        public IDatabase Db;
-        public RedisDatabase Database;
+        public IDatabase Db { get; private set; }
 
-        public RedisHelper(CacheConfig config, IRedisSerializer redisSerializer)
+        public RedisDatabase Database { get; private set; }
+
+        public RedisHelper(IRedisSerializer redisSerializer, IOptionsMonitor<RedisOptions> options)
         {
             _redisSerializer = redisSerializer;
-            _config = config.Redis;
+            _options = options;
             CreateConnection();
         }
 
@@ -36,7 +40,7 @@ namespace Wyn.Cache.Redis
         public IDatabase GetDb(int db = -1)
         {
             if (db == -1)
-                db = _config.DefaultDb;
+                db = _options.CurrentValue.DefaultDb;
 
             return _redis.GetDatabase(db);
         }
@@ -49,7 +53,7 @@ namespace Wyn.Cache.Redis
         public RedisDatabase GetDatabase(int db = -1)
         {
             if (db == -1)
-                db = _config.DefaultDb;
+                db = _options.CurrentValue.DefaultDb;
 
             return new RedisDatabase(db, this);
         }
@@ -69,8 +73,8 @@ namespace Wyn.Cache.Redis
         /// </summary>
         internal void CreateConnection()
         {
-            _prefix = _config.Prefix;
-            _redis = ConnectionMultiplexer.Connect(_config.ConnectionString);
+            _prefix = _options.CurrentValue.KeyPrefix;
+            _redis = ConnectionMultiplexer.Connect(_options.CurrentValue.ConnectionString);
             Db = GetDb();
             Database = GetDatabase();
         }

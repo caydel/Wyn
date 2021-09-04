@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+
 using Dapper;
+
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Adapter;
 using Wyn.Data.Abstractions.Descriptors;
@@ -14,7 +17,7 @@ namespace Wyn.Data.Core.Repository
 {
     public abstract partial class RepositoryAbstract<TEntity> : IRepository<TEntity> where TEntity : IEntity, new()
     {
-        #region ==字段==
+        #region 字段
 
         private IEntitySqlDescriptor _sql;
         private IDbAdapter _adapter;
@@ -22,7 +25,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==属性==
+        #region 属性
 
         public IDbContext DbContext { get; private set; }
 
@@ -46,7 +49,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==初始化==
+        #region 初始化
 
         /// <summary>
         /// 初始化
@@ -68,9 +71,9 @@ namespace Wyn.Data.Core.Repository
             Uow = uow;
         }
 
-        #region ==数据操作方法，对Dapper进行的二次封装，这些方法只能在仓储内访问==
+        #region 数据操作方法，对Dapper进行的二次封装，这些方法只能在仓储内访问
 
-        #region ==Execute==
+        #region Execute
 
         /// <summary>
         /// 执行一个命令并返回受影响的行数
@@ -88,7 +91,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==ExecuteScalar==
+        #region ExecuteScalar
 
         /// <summary>
         /// 执行一个命令并返回单个值
@@ -107,7 +110,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==ExecuteReader==
+        #region ExecuteReader
 
         /// <summary>
         /// 执行SQL语句并返回IDataReader
@@ -125,7 +128,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==QueryFirstOrDefault==
+        #region QueryFirstOrDefault
 
         /// <summary>
         /// 查询第一条数据，不存在返回默认值
@@ -157,7 +160,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==QuerySingleOrDefault==
+        #region QuerySingleOrDefault
 
         /// <summary>
         /// 查询单条记录，不存在返回默认值，如果存在多条记录则抛出异常
@@ -189,7 +192,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==QueryMultiple==
+        #region QueryMultiple
 
         /// <summary>
         /// 查询多条结果
@@ -207,7 +210,7 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
-        #region ==Query==
+        #region Query
 
         /// <summary>
         /// 查询结果集返回动态类型
@@ -239,9 +242,28 @@ namespace Wyn.Data.Core.Repository
 
         #endregion
 
+        #region Find
+
+        IQueryable<TEntity> IRepository<TEntity>.Find()
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<TEntity> IRepository<TEntity>.Find(Expression<Func<TEntity, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<TEntity> IRepository<TEntity>.Find(Expression<Func<TEntity, bool>> expression, bool noLock)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
-        #region ==私有方法==
+        #endregion
+
+        #region 私有方法
 
         private IDbConnection OpenConn(IUnitOfWork uow, out IDbTransaction transaction)
         {
@@ -250,7 +272,7 @@ namespace Wyn.Data.Core.Repository
                 transaction = uow.Transaction;
                 return uow.Transaction.Connection;
             }
-            //先从事务中获取连接
+            // 先从事务中获取连接
             if (Transaction != null)
             {
                 transaction = Transaction;
@@ -285,7 +307,7 @@ namespace Wyn.Data.Core.Repository
             if (primaryKey.IsNo)
                 throw new ArgumentException("该实体没有主键，无法使用该方法~");
 
-            //验证id有效性
+            // 验证id有效性
             if ((primaryKey.IsInt || primaryKey.IsLong) && id < 1)
             {
                 throw new ArgumentException("数值类型主键不能小于1~");

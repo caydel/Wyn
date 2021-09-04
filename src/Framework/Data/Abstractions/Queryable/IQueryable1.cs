@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+
 using Wyn.Data.Abstractions.Entities;
 using Wyn.Data.Abstractions.Pagination;
 using Wyn.Data.Abstractions.Queryable.Grouping;
+using Wyn.Utils.Result;
 
 namespace Wyn.Data.Abstractions.Queryable
 {

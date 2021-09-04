@@ -11,9 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Adapter;
 using Wyn.Data.Abstractions.Logger;
-using Wyn.Data.Abstractions.Options;
 using Wyn.Data.Abstractions.Schema;
 using Wyn.Data.Core.Descriptors;
+using Wyn.Data.Options;
 using Wyn.Utils.Extensions;
 using Wyn.Utils.Helpers;
 

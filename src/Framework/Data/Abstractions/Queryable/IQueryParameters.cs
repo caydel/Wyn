@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using Dapper;
 
 namespace Wyn.Data.Abstractions.Queryable

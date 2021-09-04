@@ -9,13 +9,17 @@ using Microsoft.Extensions.Logging;
 using Wyn.Utils.Helpers;
 using Wyn.Utils.Result;
 
-namespace Wyn.Host.Core
+namespace Wyn.Host.Middleware
 {
+    /// <summary>
+    /// 异常处理中间件
+    /// </summary>
     public class ExceptionHandleMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IHostEnvironment _env;
         private readonly ILogger<ExceptionHandleMiddleware> _logger;
+        
         public ExceptionHandleMiddleware(RequestDelegate next, IHostEnvironment env, ILogger<ExceptionHandleMiddleware> logger)
         {
             _next = next;

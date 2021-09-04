@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Entities;
 using Wyn.Data.Abstractions.Pagination;
@@ -9,6 +10,8 @@ using Wyn.Data.Abstractions.Queryable;
 using Wyn.Data.Abstractions.Queryable.Grouping;
 using Wyn.Data.Core.Internal.QueryStructure;
 using Wyn.Data.Core.Queryable.Grouping;
+using Wyn.Utils.Extensions;
+using Wyn.Utils.Result;
 
 namespace Wyn.Data.Core.Queryable
 {
@@ -53,7 +56,7 @@ namespace Wyn.Data.Core.Queryable
 
         #endregion
 
-        #region 过滤条件=
+        #region 过滤条件
 
         public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> expression)
         {

@@ -2,13 +2,14 @@
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Wyn.Host.Abstractions;
-using Wyn.Log;
+using Serilog;
+
 using Wyn.Utils.Extensions;
 
-using HostOptions = Wyn.Host.Abstractions.HostOptions;
+using HostOptions = Wyn.Host.Options.HostOptions;
 
 namespace Wyn.Host.Core
 {
@@ -17,25 +18,54 @@ namespace Wyn.Host.Core
     /// </summary>
     public class HostBuilder
     {
+        private readonly string[] _args;
+
+        public HostBuilder(string[] args) => _args = args;
+
         /// <summary>
-        /// 启动
+        /// 创建IHost
         /// </summary>
-        /// <typeparam name="TStartup"></typeparam>
-        /// <param name="args">启动参数</param>
-        public void Run<TStartup>(string[] args) where TStartup : StartupAbstract
+        /// <returns></returns>
+        public void Run()
         {
-            CreateBuilder<TStartup>(args).Build().Run();
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(_args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    var options = LoadOptions();
+
+                    // 使用Serilog日志
+                    webBuilder.UseSerilog((hostingContext, loggerConfiguration) =>
+                    {
+                        loggerConfiguration
+                            .ReadFrom
+                            .Configuration(hostingContext.Configuration)
+                            .Enrich
+                            .FromLogContext();
+                    });
+
+                    // 将宿主配置项注入容器
+                    webBuilder.ConfigureServices(services =>
+                    {
+                        services.AddSingleton(options);
+                    });
+
+                    // 绑定启动类
+                    webBuilder.UseStartup<Startup>();
+
+                    // 绑定URL
+                    webBuilder.UseUrls(options.Urls);
+
+                })
+                .Build()
+                .Run();
         }
 
         /// <summary>
-        /// 创建主机生成器
+        /// 加载宿主配置项
         /// </summary>
-        /// <typeparam name="TStartup"></typeparam>
-        /// <param name="args"></param>
         /// <returns></returns>
-        public IHostBuilder CreateBuilder<TStartup>(string[] args) where TStartup : StartupAbstract
+        private HostOptions LoadOptions()
         {
-
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile("appsettings.json", false);
@@ -51,18 +81,11 @@ namespace Wyn.Host.Core
             var hostOptions = new HostOptions();
             config.GetSection("Host").Bind(hostOptions);
 
+            // 设置默认端口
             if (hostOptions.Urls.IsNull())
-                hostOptions.Urls = "http://*:5000";
+                hostOptions.Urls = "http://*:7001";
 
-            return Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
-                    .UseDefaultServiceProvider(options => { options.ValidateOnBuild = false; })
-                    .ConfigureWebHostDefaults(webBuilder =>
-                    {
-                        webBuilder.UseLogging()
-                            .UseStartup<TStartup>()
-                            .UseUrls(hostOptions.Urls);
-                    });
-           
+            return hostOptions;
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Wyn.MQ.Abstractions;
 using Wyn.MQ.Core;
+using Wyn.MQ.Options;
 
 namespace Wyn.MQ
 {
@@ -16,7 +17,7 @@ namespace Wyn.MQ
         /// <returns></returns>
         public static IServiceCollection AddRabbitMQ(this IServiceCollection services, IConfiguration cfg)
         {
-            var config = new RabbitMQConfig();
+            var config = new RabbitMQOptions();
             var section = cfg.GetSection("RabbitMQ");
             section?.Bind(config);
 

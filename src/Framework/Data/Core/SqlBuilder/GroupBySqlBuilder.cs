@@ -4,11 +4,13 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 #endif
 using System.Text;
+
 using Wyn.Data.Abstractions.Adapter;
 using Wyn.Data.Abstractions.Pagination;
 using Wyn.Data.Abstractions.Queryable;
 using Wyn.Data.Core.Internal;
 using Wyn.Data.Core.Internal.QueryStructure;
+using Wyn.Utils.Extensions;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Data.Adapter.MySql.Test")]
@@ -129,15 +131,15 @@ namespace Wyn.Data.Core.SqlBuilder
         public void ResolveSelect(StringBuilder sqlBuilder)
         {
             var select = _queryBody.Select;
-            if (select  null)
+            if (select == null)
                 throw new ArgumentException("未指定查询信息");
 
-            if (select.Mode  QuerySelectMode.Sql)
+            if (select.Mode == QuerySelectMode.Sql)
             {
                 //SQL语句
                 sqlBuilder.Append(select.Sql);
             }
-            else if (select.Mode  QuerySelectMode.Lambda)
+            else if (select.Mode == QuerySelectMode.Lambda)
             {
                 //表达式
                 var exp = select.Include.Body;
@@ -197,7 +199,7 @@ namespace Wyn.Data.Core.SqlBuilder
             }
 
             //移除末尾的逗号
-            if (sqlBuilder.Length > 0 && sqlBuilder[^1]  ',')
+            if (sqlBuilder.Length > 0 && sqlBuilder[^1] == ',')
             {
                 sqlBuilder.Remove(sqlBuilder.Length - 1, 1);
             }
@@ -257,7 +259,7 @@ namespace Wyn.Data.Core.SqlBuilder
             }
 
             //移除末尾的逗号
-            if (sqlBuilder[^1]  ',')
+            if (sqlBuilder[^1] == ',')
             {
                 sqlBuilder.Remove(sqlBuilder.Length - 1, 1);
             }
@@ -281,7 +283,7 @@ namespace Wyn.Data.Core.SqlBuilder
                 sqlBuilder.Append(" HAVING");
                 foreach (var having in _queryBody.Havings)
                 {
-                    if (having.Mode  QueryHavingMode.Sql)
+                    if (having.Mode == QueryHavingMode.Sql)
                     {
                         sqlBuilder.Append(having.Sql);
                     }
@@ -314,17 +316,17 @@ namespace Wyn.Data.Core.SqlBuilder
 
             foreach (var sort in _queryBody.Sorts)
             {
-                if (sort.Mode  QuerySortMode.Lambda)
+                if (sort.Mode == QuerySortMode.Lambda)
                 {
                     ResolveSort(sqlBuilder, sort.Lambda.Body, sort.Type);
                 }
                 else
                 {
-                    sqlBuilder.AppendFormat(" {0} {1},", sort.Sql, sort.Type  SortType.Asc ? "ASC" : "DESC");
+                    sqlBuilder.AppendFormat(" {0} {1},", sort.Sql, sort.Type == SortType.Asc ? "ASC" : "DESC");
                 }
             }
 
-            if (startLength + 9  sqlBuilder.Length)
+            if (startLength + 9 == sqlBuilder.Length)
             {
                 sqlBuilder.Remove(sqlBuilder.Length - 9, 9);
             }
@@ -339,7 +341,7 @@ namespace Wyn.Data.Core.SqlBuilder
         /// </summary>
         private void ResolveSort(StringBuilder sqlBuilder, Expression exp, SortType sortType)
         {
-            var sort = sortType  SortType.Asc ? "ASC" : "DESC";
+            var sort = sortType == SortType.Asc ? "ASC" : "DESC";
             switch (exp.NodeType)
             {
                 case ExpressionType.MemberAccess:
@@ -351,13 +353,13 @@ namespace Wyn.Data.Core.SqlBuilder
                     switch (callExp.Object.NodeType)
                     {
                         case ExpressionType.Parameter:
-                            //OrderBy(m => m.Sum(x => x.Id))
+                            // OrderBy(m => m.Sum(x => x.Id))
                             var fullLambda = (callExp.Arguments[0] as UnaryExpression).Operand as LambdaExpression;
                             var columnName = _queryBody.GetColumnName(fullLambda.Body);
                             sqlBuilder.AppendFormat(" {0} {1},", _queryBody.DbAdapter.FunctionMapper(methodName, columnName), sort);
                             break;
                         case ExpressionType.MemberAccess:
-                            //OrderBy(m => m.Key.Title.Substring(3))
+                            // OrderBy(m => m.Key.Title.Substring(3))
                             columnName = GetColumnName(callExp!.Object as MemberExpression);
                             var args = ExpressionResolver.Arguments2Object(callExp.Arguments);
                             sqlBuilder.AppendFormat(" {0} {1},", _dbAdapter.FunctionMapper(methodName, columnName, callExp.Object!.Type, args), sort);
@@ -399,7 +401,7 @@ namespace Wyn.Data.Core.SqlBuilder
                 }
              */
 
-            //获取查询列对应的实体
+            // 获取查询列对应的实体
             var groupByExp = _queryBody.GroupBy.Body as NewExpression;
             for (var t = 0; t < groupByExp.Members.Count; t++)
             {

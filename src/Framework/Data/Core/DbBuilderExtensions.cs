@@ -1,10 +1,13 @@
 using System;
-using Castle.DynamicProxy;
+
 using Microsoft.Extensions.DependencyInjection.Extensions;
+
+using Castle.DynamicProxy;
+
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Adapter;
-using Wyn.Data.Abstractions.Options;
 using Wyn.Data.Core.Internal;
+using Wyn.Data.Options;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -43,7 +46,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.AddAction(() =>
             {
-                //优先使用自定义的代码优先提供器，毕竟默认的建库见表语句并不能满足所有人的需求
+                // 优先使用自定义的代码优先提供器，毕竟默认的建库见表语句并不能满足所有人的需求
                 ICodeFirstProvider provider = options.CustomCodeFirstProvider;
                 if (provider == null)
                 {

@@ -1,8 +1,11 @@
 using System.Reflection;
 using System.Threading.Tasks;
+
 using Castle.DynamicProxy;
+
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Attributes;
+using Wyn.Utils.Result;
 
 namespace Wyn.Data.Core.Internal
 {
@@ -25,7 +28,7 @@ namespace Wyn.Data.Core.Internal
             var transactionAttribute = invocation.MethodInvocationTarget.GetCustomAttribute<TransactionAttribute>();
             if (transactionAttribute == null)
             {
-                //调用业务方法
+                // 调用业务方法
                 invocation.Proceed();
             }
             else
@@ -36,17 +39,17 @@ namespace Wyn.Data.Core.Internal
 
         private async void InterceptAsync(IInvocation invocation, TransactionAttribute attribute)
         {
-            //创建工作单元
+            // 创建工作单元
             using var uow = _context.NewUnitOfWork(attribute.IsolationLevel);
             try
             {
-                //使仓储绑定工作单元
+                // 使仓储绑定工作单元
                 foreach (var repository in _manager.Repositories)
                 {
                     repository.BindingUow(uow);
                 }
 
-                //调用业务方法
+                // 调用业务方法
                 invocation.Proceed();
 
                 dynamic result = invocation.ReturnValue;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+
 using Wyn.Data.Abstractions;
 using Wyn.Data.Abstractions.Adapter;
 using Wyn.Data.Abstractions.Descriptors;
@@ -11,6 +12,8 @@ using Wyn.Data.Abstractions.Queryable;
 using Wyn.Data.Core.Extensions;
 using Wyn.Data.Core.Internal;
 using Wyn.Data.Core.Internal.QueryStructure;
+using Wyn.Utils.Extensions;
+using Wyn.Utils.Helpers;
 
 namespace Wyn.Data.Core.SqlBuilder
 {
@@ -34,7 +37,7 @@ namespace Wyn.Data.Core.SqlBuilder
             _dbAdapter = _dbContext.Adapter;
         }
 
-        #region ==BuildListSql==
+        #region BuildListSql
 
         /// <summary>
         /// 生成列表语句
@@ -80,7 +83,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildFirstSql==
+        #region BuildFirstSql
 
         /// <summary>
         /// 生成获取第一条记录语句
@@ -122,7 +125,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildPaginationSql==
+        #region BuildPaginationSql
 
         /// <summary>
         /// 生成分页查询语句
@@ -164,7 +167,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildCountSql==
+        #region BuildCountSql
 
         public string BuildCountSql(out IQueryParameters parameters)
         {
@@ -204,7 +207,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildExistsSql==
+        #region BuildExistsSql
 
         /// <summary>
         /// 生成判断存在语句
@@ -248,7 +251,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildFunctionSql==
+        #region BuildFunctionSql
 
         /// <summary>
         /// 生成函数SQL
@@ -308,7 +311,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildUpdateSql==
+        #region BuildUpdateSql
 
         /// <summary>
         /// 生成更新SQL
@@ -329,13 +332,13 @@ namespace Wyn.Data.Core.SqlBuilder
         public string BuildUpdateSql(IQueryParameters parameters)
         {
             var tableName = _queryBody.Joins.First().TableName;
-            Check.NotNull(tableName, nameof(tableName), "未指定更新表");
+            GenericHelper.NotNull(tableName, nameof(tableName), "未指定更新表");
 
             var sqlBuilder = new StringBuilder();
 
-            //更新语句优先
+            // 更新语句优先
             var updateSql = _queryBody.Update.Sql.NotNull() ? _queryBody.Update.Sql : ExpressionResolver.Resolve(_queryBody, _queryBody.Update.Lambda, parameters);
-            Check.NotNull(updateSql, nameof(updateSql), "生成更新sql异常");
+            GenericHelper.NotNull(updateSql, nameof(updateSql), "生成更新sql异常");
 
             sqlBuilder.AppendFormat("UPDATE {0} SET ", _dbAdapter.AppendQuote(tableName));
             sqlBuilder.Append(updateSql);
@@ -343,7 +346,7 @@ namespace Wyn.Data.Core.SqlBuilder
             SetUpdateInfo(sqlBuilder, parameters);
 
             var whereSql = ExpressionResolver.ResolveWhere(_queryBody, parameters);
-            Check.NotNull(whereSql, nameof(whereSql), "批量更新必须指定条件，防止人为失误误操作");
+            GenericHelper.NotNull(whereSql, nameof(whereSql), "批量更新必须指定条件，防止人为失误误操作");
             sqlBuilder.AppendFormat(" {0};", whereSql);
 
             return sqlBuilder.ToString();
@@ -394,7 +397,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildDeleteSql==
+        #region BuildDeleteSql
 
         /// <summary>
         /// 生成删除SQL
@@ -415,14 +418,14 @@ namespace Wyn.Data.Core.SqlBuilder
         public string BuildDeleteSql(IQueryParameters parameters)
         {
             var tableName = _queryBody.Joins.First().TableName;
-            Check.NotNull(tableName, nameof(tableName), "未指定更新表");
+            GenericHelper.NotNull(tableName, nameof(tableName), "未指定更新表");
 
             var sqlBuilder = new StringBuilder();
 
             sqlBuilder.AppendFormat("DELETE FROM {0} ", _dbAdapter.AppendQuote(tableName));
 
             var whereSql = ExpressionResolver.ResolveWhere(_queryBody, parameters);
-            Check.NotNull(whereSql, nameof(whereSql), "生成条件sql异常，删除必须指定条件，防止误操作");
+            GenericHelper.NotNull(whereSql, nameof(whereSql), "生成条件sql异常，删除必须指定条件，防止误操作");
             sqlBuilder.AppendFormat(" {0}", whereSql);
 
             return sqlBuilder.ToString();
@@ -442,7 +445,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==BuildSoftDeleteSql==
+        #region BuildSoftDeleteSql
 
         /// <summary>
         /// 生成软删除SQL
@@ -467,7 +470,7 @@ namespace Wyn.Data.Core.SqlBuilder
                 throw new Exception("当前实体未实现软删除功能，无法调用该方法");
 
             var tableName = _queryBody.Joins.First().TableName;
-            Check.NotNull(tableName, nameof(tableName), "未指定更新表");
+            GenericHelper.NotNull(tableName, nameof(tableName), "未指定更新表");
 
             var deletedColumnName = entityDescriptor.GetDeletedColumnName();
             var deletedTimeColumnName = entityDescriptor.GetDeletedTimeColumnName();
@@ -484,7 +487,7 @@ namespace Wyn.Data.Core.SqlBuilder
             ExpressionResolver.AppendValue(_queryBody, _dbContext.AccountResolver.AccountName, sqlBuilder, parameters);
 
             var whereSql = ExpressionResolver.ResolveWhere(_queryBody, parameters);
-            Check.NotNull(whereSql, nameof(whereSql), "生成条件sql异常");
+            GenericHelper.NotNull(whereSql, nameof(whereSql), "生成条件sql异常");
             sqlBuilder.AppendFormat(" {0}", whereSql);
 
             return sqlBuilder.ToString();
@@ -504,7 +507,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==解析查询列==
+        #region 解析查询列
 
         public string ResolveSelect()
         {
@@ -521,30 +524,30 @@ namespace Wyn.Data.Core.SqlBuilder
         {
             var select = _queryBody.Select;
 
-            //先解析出要排除的列
+            // 先解析出要排除的列
             var excludeColumns = ResolveSelectExcludeColumns();
 
             if (select == null)
             {
-                //解析所有实体
+                // 解析所有实体
                 ResolveSelectForEntity(sqlBuilder, 0, excludeColumns);
             }
             else if (select.Mode == QuerySelectMode.Sql)
             {
-                //SQL语句
+                // SQL语句
                 sqlBuilder.Append(select.Sql);
             }
             else if (select.Mode == QuerySelectMode.Lambda)
             {
-                //表达式
+                // 表达式
                 var exp = select.Include.Body;
                 switch (exp.NodeType)
                 {
-                    //返回的整个实体
+                    // 返回的整个实体
                     case ExpressionType.Parameter:
                         ResolveSelectForEntity(sqlBuilder, 0, excludeColumns);
                         break;
-                    //返回的某个列
+                    // 返回的某个列
                     case ExpressionType.MemberAccess:
                         ResolveSelectForMember(sqlBuilder, exp as MemberExpression, select.Include, excludeColumns);
                         if (sqlBuilder.Length > 0 && sqlBuilder[^1] == ',')
@@ -552,14 +555,14 @@ namespace Wyn.Data.Core.SqlBuilder
                             sqlBuilder.Remove(sqlBuilder.Length - 1, 1);
                         }
                         break;
-                    //自定义的返回对象
+                    // 自定义的返回对象
                     case ExpressionType.New:
                         ResolveSelectForNew(sqlBuilder, exp as NewExpression, select.Include, excludeColumns);
                         break;
                 }
             }
 
-            //移除末尾的逗号
+            // 移除末尾的逗号
             if (sqlBuilder.Length > 0 && sqlBuilder[^1] == ',')
             {
                 sqlBuilder.Remove(sqlBuilder.Length - 1, 1);
@@ -576,7 +579,7 @@ namespace Wyn.Data.Core.SqlBuilder
             {
                 var lambda = _queryBody.Select.Exclude;
                 var body = lambda.Body;
-                //整个实体
+                // 整个实体
                 if (body.NodeType == ExpressionType.Parameter)
                 {
                     throw new ArgumentException("不能排除整个实体的列");
@@ -584,7 +587,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
                 var list = new List<IColumnDescriptor>();
 
-                //返回的单个列
+                // 返回的单个列
                 if (body.NodeType == ExpressionType.MemberAccess)
                 {
                     var col = _queryBody.GetJoin(body as MemberExpression).Item2;
@@ -594,20 +597,20 @@ namespace Wyn.Data.Core.SqlBuilder
                     return list;
                 }
 
-                //自定义的返回对象
+                // 自定义的返回对象
                 if (body.NodeType == ExpressionType.New)
                 {
                     var newExp = body as NewExpression;
                     for (var i = 0; i < newExp!.Arguments.Count; i++)
                     {
                         var arg = newExp.Arguments[i];
-                        //实体
+                        // 实体
                         if (arg.NodeType == ExpressionType.Parameter)
                         {
                             throw new ArgumentException("不能排除整个实体");
                         }
 
-                        //成员
+                        // 成员
                         if (arg.NodeType == ExpressionType.MemberAccess)
                         {
                             var col = _queryBody.GetJoin(arg as MemberExpression).Item2;
@@ -638,7 +641,7 @@ namespace Wyn.Data.Core.SqlBuilder
                 if (excludeColumns != null && excludeColumns.Any(m => m == col))
                     continue;
 
-                //单个实体时不需要别名
+                // 单个实体时不需要别名
                 sqlBuilder.Append(IsSingleEntity ? $"{_dbAdapter.AppendQuote(col.Name)}" : $"{join.Alias}.{_dbAdapter.AppendQuote(col.Name)}");
 
                 sqlBuilder.AppendFormat(" AS {0},", _dbAdapter.AppendQuote(col.PropertyInfo.Name));
@@ -658,19 +661,19 @@ namespace Wyn.Data.Core.SqlBuilder
             {
                 var arg = newExp.Arguments[i];
                 var alias = newExp.Members![i].Name;
-                //成员
+                // 成员
                 if (arg.NodeType == ExpressionType.MemberAccess)
                 {
                     ResolveSelectForMember(sqlBuilder, arg as MemberExpression, fullLambda, excludeColumns, alias);
                     continue;
                 }
-                //实体
+                // 实体
                 if (arg.NodeType == ExpressionType.Parameter && arg is ParameterExpression parameterExp)
                 {
                     ResolveSelectForEntity(sqlBuilder, fullLambda.Parameters.IndexOf(parameterExp), excludeColumns);
                     continue;
                 }
-                //方法
+                // 方法
                 if (arg.NodeType == ExpressionType.Call && arg is MethodCallExpression callExp)
                 {
                     var columnName = _queryBody.GetColumnName(callExp!.Object);
@@ -707,7 +710,7 @@ namespace Wyn.Data.Core.SqlBuilder
 
         #endregion
 
-        #region ==解析排序==
+        #region 解析排序
 
         /// <summary>
         /// 解析排序

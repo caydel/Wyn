@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Linq;
 
-using AutoMapper;
-
 using Microsoft.Extensions.DependencyInjection;
 
+using AutoMapper;
+
 using Wyn.Mapper.Abstractions;
+using Wyn.Mapper.Attributes;
 using Wyn.Module;
+using Wyn.Module.Abstractions;
+using Wyn.Mapper.Core;
+
+using IMapper = Wyn.Mapper.Abstractions.IMapper;
 
 namespace Wyn.Mapper
 {
@@ -22,18 +27,28 @@ namespace Wyn.Mapper
         {
             var config = new MapperConfiguration(cfg =>
             {
-                foreach (var moduleInfo in modules)
+                foreach (var module in modules)
                 {
-                    var types = moduleInfo.AssemblyDescriptor.Application.GetTypes().Where(t => typeof(IMapperConfig).IsAssignableFrom(t));
+                    var types = module.LayerAssemblies.Core.GetTypes();
 
                     foreach (var type in types)
                     {
-                        ((IMapperConfig)Activator.CreateInstance(type)).Bind(cfg);
+                        var map = (ObjectMapAttribute)Attribute.GetCustomAttribute(type, typeof(ObjectMapAttribute));
+                        if (map != null)
+                        {
+                            cfg.CreateMap(type, map.TargetType);
+
+                            if (map.TwoWay)
+                            {
+                                cfg.CreateMap(map.TargetType, type);
+                            }
+                        }
                     }
                 }
             });
 
             services.AddSingleton(config.CreateMapper());
+            services.AddSingleton<IMapper, DefaultMapper>();
 
             return services;
         }

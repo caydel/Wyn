@@ -5,11 +5,15 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Mkh.Auth.Abstractions;
 
-namespace Mkh.Auth.Jwt
+using Wyn.Auth.Abstractions;
+using Wyn.Utils.Extensions;
+using Wyn.Utils.Result;
+
+namespace Wyn.Auth.Jwt
 {
     /// <summary>
     /// JWT凭证生成器
@@ -39,8 +43,8 @@ namespace Mkh.Auth.Jwt
 
             var result = new JwtResultModel
             {
-                AccountId = Guid.Parse(claims.First(m => m.Type == MkhClaimTypes.ACCOUNT_ID).Value),
-                Platform = claims.First(m => m.Type == MkhClaimTypes.PLATFORM).Value.ToInt(),
+                AccountId = Guid.Parse(claims.First(m => m.Type == Abstractions.ClaimTypes.ACCOUNT_ID).Value),
+                Platform = claims.First(m => m.Type == Abstractions.ClaimTypes.PLATFORM).Value.ToInt(),
                 AccessToken = token,
                 ExpiresIn = (_options.Expires < 0 ? 120 : _options.Expires) * 60,
                 RefreshToken = Guid.NewGuid().ToString().Replace("-", "")

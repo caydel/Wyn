@@ -36,8 +36,8 @@ namespace Wyn.Data.Core.Repository
             var primaryKey = EntityDescriptor.PrimaryKey;
             if (primaryKey.IsInt)
             {
-                //自增主键
-                sql += _adapter.IdentitySql;
+                // 自增主键
+                sql += _adapter.IdEntitySql;
                 var id = await ExecuteScalar<int>(sql, entity, uow);
                 if (id > 0)
                 {
@@ -52,8 +52,8 @@ namespace Wyn.Data.Core.Repository
 
             if (primaryKey.IsLong)
             {
-                //自增主键
-                sql += _adapter.IdentitySql;
+                // 自增主键
+                sql += _adapter.IdEntitySql;
                 var id = await ExecuteScalar<long>(sql, entity, uow);
                 if (id > 0)
                 {

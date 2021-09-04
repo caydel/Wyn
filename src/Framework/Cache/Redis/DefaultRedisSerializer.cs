@@ -8,7 +8,6 @@ using Wyn.Utils.Helpers;
 
 namespace Wyn.Cache.Redis
 {
-    [Singleton]
     public class DefaultRedisSerializer : IRedisSerializer
     {
         public string Serialize<T>(T value)

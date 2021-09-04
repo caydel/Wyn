@@ -1,4 +1,4 @@
-using Wyn.Data.Abstractions.Options;
+using Wyn.Data.Options;
 
 namespace Wyn.Data.Abstractions.Logger
 {

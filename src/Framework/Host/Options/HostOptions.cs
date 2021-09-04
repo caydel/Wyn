@@ -1,7 +1,7 @@
-﻿namespace Wyn.Host.Abstractions
+﻿namespace Wyn.Host.Options
 {
     /// <summary>
-    /// 主机配置项
+    /// 宿主配置项
     /// </summary>
     public class HostOptions
     {
@@ -11,14 +11,14 @@
         public string Urls { get; set; }
 
         /// <summary>
-        /// 开启Swagger
+        /// 基础路径
         /// </summary>
-        public bool Swagger { get; set; }
+        public string Base { get; set; }
 
         /// <summary>
-        /// 启用代理
+        /// 是否开启Swagger功能
         /// </summary>
-        public bool Proxy { get; set; }
+        public bool Swagger { get; set; }
 
         /// <summary>
         /// 指定跨域访问时预检请求的有效期，单位秒，默认30分钟
@@ -26,8 +26,8 @@
         public int PreflightMaxAge { get; set; }
 
         /// <summary>
-        /// 隐藏启动Logo
+        /// 是否启用代理
         /// </summary>
-        public bool HideStartLogo { get; set; }
+        public bool Proxy { get; set; }
     }
 }

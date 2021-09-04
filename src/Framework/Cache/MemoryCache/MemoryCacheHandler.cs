@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 using Microsoft.Extensions.Caching.Memory;
 
-using Wyn.Cache.Abstractions;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Cache.MemoryCache
+namespace Wyn.Cache.Abstractions.MemoryCache
 {
     public class MemoryCacheHandler : ICacheHandler
     {
@@ -18,60 +17,53 @@ namespace Wyn.Cache.MemoryCache
 
         public MemoryCacheHandler(IMemoryCache cache) => _cache = cache;
 
-        public string Get(string key) => _cache.Get(key)?.ToString();
+        public Task<string> Get(string key)
+        {
+            var value = _cache.Get(key);
+            return Task.FromResult(value?.ToString());
+        }
 
-        public T Get<T>(string key) => _cache.Get<T>(key);
+        public Task<T> Get<T>(string key)
+        {
+            return Task.FromResult(_cache.Get<T>(key));
+        }
 
-        public Task<string> GetAsync(string key) => Task.FromResult(Get(key));
-
-        public Task<T> GetAsync<T>(string key) => Task.FromResult(_cache.Get<T>(key));
-
-
-        public bool TryGetValue(string key, out string value) => _cache.TryGetValue(key, out value);
-
-        public bool TryGetValue<T>(string key, out T value) => _cache.TryGetValue(key, out value);
-
-        public bool Set<T>(string key, T value)
+        public Task<bool> Set<T>(string key, T value)
         {
             _cache.Set(key, value);
-            return true;
+            return Task.FromResult(true);
         }
 
-        public bool Set<T>(string key, T value, int expires)
+        public Task<bool> Set<T>(string key, T value, int expires)
         {
             _cache.Set(key, value, new TimeSpan(0, 0, expires, 0));
-            return true;
-        }
-
-        public Task<bool> SetAsync<T>(string key, T value)
-        {
-            Set(key, value);
             return Task.FromResult(true);
         }
 
-        public Task<bool> SetAsync<T>(string key, T value, int expires)
+        public Task<bool> Set<T>(string key, T value, DateTime expires)
         {
-            Set(key, value, expires);
+            _cache.Set(key, value, expires - DateTime.Now);
             return Task.FromResult(true);
         }
 
-        public bool Remove(string key)
+        public Task<bool> Set<T>(string key, T value, TimeSpan expires)
         {
-            _cache.Remove(key);
-            return true;
+            _cache.Set(key, value, expires);
+            return Task.FromResult(true);
         }
 
-        public Task<bool> RemoveAsync(string key)
+        public Task<bool> Remove(string key)
         {
             _cache.Remove(key);
             return Task.FromResult(true);
         }
 
-        public bool Exists(string key) => TryGetValue(key, out _);
+        public Task<bool> Exists(string key)
+        {
+            return Task.FromResult(_cache.TryGetValue(key, out _));
+        }
 
-        public Task<bool> ExistsAsync(string key) => Task.FromResult(TryGetValue(key, out _));
-
-        public async Task RemoveByPrefixAsync(string prefix)
+        public async Task RemoveByPrefix(string prefix)
         {
             if (prefix.IsNull())
                 return;
@@ -79,7 +71,7 @@ namespace Wyn.Cache.MemoryCache
             var keys = GetAllKeys().Where(m => m.StartsWith(prefix));
             foreach (var key in keys)
             {
-                await RemoveAsync(key);
+                await Remove(key);
             }
         }
 

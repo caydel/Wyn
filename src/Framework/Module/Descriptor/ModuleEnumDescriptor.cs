@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Wyn.Utils.Result;
 
-namespace Wyn.Module
+namespace Wyn.Module.Descriptor
 {
     /// <summary>
     /// 模块枚举描述器
