@@ -51,7 +51,7 @@ namespace Wyn.Auth.Core
                     };
 
                     // 请求方式
-                    var httpMethodAttr = action.MethodInfo.CustomAnnotations.FirstOrDefault(m => typeof(HttpMethodAttribute).IsAssignableFrom(m.AttributeType));
+                    var httpMethodAttr = action.MethodInfo.CustomAttributes.FirstOrDefault(m => typeof(HttpMethodAttribute).IsAssignableFrom(m.AttributeType));
                     if (httpMethodAttr != null)
                     {
                         var httpMethodName = httpMethodAttr.AttributeType.Name.Replace("Http", "").Replace("Attribute", "");
@@ -60,14 +60,14 @@ namespace Wyn.Auth.Core
 
                     #region 权限模式
 
-                    var allowAnonymousAttribute = action.MethodInfo.CustomAnnotations.FirstOrDefault(m => typeof(AllowAnonymousAttribute) == m.AttributeType);
+                    var allowAnonymousAttribute = action.MethodInfo.CustomAttributes.FirstOrDefault(m => typeof(AllowAnonymousAttribute) == m.AttributeType);
                     if (allowAnonymousAttribute != null)
                     {
                         permission.Mode = PermissionMode.Anonymous;
                     }
                     else
                     {
-                        var allowLoginAttribute = action.MethodInfo.CustomAnnotations.FirstOrDefault(m => typeof(AllowWhenAuthenticatedAttribute) == m.AttributeType);
+                        var allowLoginAttribute = action.MethodInfo.CustomAttributes.FirstOrDefault(m => typeof(AllowWhenAuthenticatedAttribute) == m.AttributeType);
                         if (allowLoginAttribute != null)
                         {
                             permission.Mode = PermissionMode.Login;
