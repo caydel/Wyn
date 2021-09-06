@@ -16,3 +16,5 @@ Log
 licenses.licx.bak
 *.chm
 _packages
+src/Modules/*
+src/Framework/99.Data/*

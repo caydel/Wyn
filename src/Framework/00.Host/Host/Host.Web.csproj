@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.1.4" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\01.Utils\Utils\Utils.csproj" />
+    <ProjectReference Include="..\..\02.Module\Module.Abstractions\Module.Abstractions.csproj" />
+    <ProjectReference Include="..\..\02.Module\Module.Core\Module.Core.csproj" />
+    <ProjectReference Include="..\..\02.Module\Module.Web\Module.Web.csproj" />
+    <ProjectReference Include="..\..\03.Mapper\Mapper.Abstractions\Mapper.Abstractions.csproj" />
+    <ProjectReference Include="..\..\03.Mapper\Mapper.Core\Mapper.Core.csproj" />
+    <ProjectReference Include="..\..\04.Cache\Cache.Core\Cache.Core.csproj" />
+    <ProjectReference Include="..\..\05.MQ\MQ.Core\MQ.Core.csproj" />
+    <ProjectReference Include="..\..\06.Auth\Auth.Core\Auth.Core.csproj" />
+  </ItemGroup>
+
+</Project>
