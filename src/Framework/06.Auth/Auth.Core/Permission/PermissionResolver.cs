@@ -13,7 +13,6 @@ using Wyn.Utils.Resolver;
 
 using HttpMethod = Wyn.Auth.Abstractions.Descriptor.HttpMethod;
 
-
 namespace Wyn.Auth.Core
 {
     public class PermissionResolver : IPermissionResolver

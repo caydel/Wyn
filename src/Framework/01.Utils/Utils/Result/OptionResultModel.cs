@@ -1,4 +1,6 @@
-﻿namespace Wyn.Utils.Result
+﻿using System.Collections.Generic;
+
+namespace Wyn.Utils.Result
 {
 
     /// <summary>
@@ -25,6 +27,11 @@
         /// 扩展数据
         /// </summary>
         public T Data { get; set; }
+
+        /// <summary>
+        /// 子级
+        /// </summary>
+        public List<OptionResultModel> Children { get; set; }
     }
 
     /// <summary>

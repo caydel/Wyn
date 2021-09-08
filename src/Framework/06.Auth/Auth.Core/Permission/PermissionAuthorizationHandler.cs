@@ -8,6 +8,7 @@ using Microsoft.Extensions.Options;
 using Wyn.Auth.Abstractions;
 using Wyn.Auth.Abstractions.Annotations;
 using Wyn.Auth.Abstractions.Options;
+using Wyn.Utils.Annotations;
 
 using HttpMethod = Wyn.Auth.Abstractions.Descriptor.HttpMethod;
 

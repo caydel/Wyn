@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.25" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Data.Abstractions\Internal\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data.Abstractions\Data.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Data.Core\Data.Core.csproj" />
+  </ItemGroup>
+  
+</Project>

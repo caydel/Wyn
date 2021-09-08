@@ -1,0 +1,63 @@
+﻿<Project>
+  <PropertyGroup>
+    <!--ID-->
+    <Id>7001</Id>
+    
+    <!--Code-->
+    <Code>Admin</Code>
+    
+    <!--模块名称-->
+    <Name>权限管理</Name>
+    
+    <!--作者-->
+    <Authors>Wyn</Authors>
+    
+    <!--图标-->
+    <Icon>permission</Icon>
+    
+    <!--版本-->
+    <Version>0.0.1</Version>
+    
+    <!--描述-->
+    <Description>Wyn Module Admin($(Name)) - $(MSBuildProjectName)</Description>
+    
+    <!--禁止显示指定的警告。 只有警告标识符的数值部分是必须指定的。 多个警告之间用分号分隔。 此参数对应于编译器的 /nowarn 开关-->
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    
+    <!--编译器仅接受包含在所选C#语言规范中的语法-->
+    <!--编译器接受最新发布的编译器版本（包括次要版本）中的语法-->
+    <LangVersion>Latest</LangVersion>
+    
+
+    <!--根命名空间前缀-->
+    <RootNamespacePrefix>Wyn</RootNamespacePrefix>
+    
+    <!--程序集-->
+    <AssemblyName>$(RootNamespacePrefix).$(MSBuildProjectName)</AssemblyName>
+
+    <!--根命名空间-->
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+
+    <!--带有XML格式注释-->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    
+    <!--控制分析器是否在设计时实时分析代码-->
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    
+    <!--将生成NuGet包的位置-->
+    <PackageOutputPath>$(SolutionDir)\_packages</PackageOutputPath>
+    
+    <!--组织-->
+    <Company>wzloo.com</Company>
+    
+    <!--版权-->    
+    <Copyright>Copyright：2020-2099</Copyright>
+    
+    <!--包工程链接-->
+    <PackageProjectUrl></PackageProjectUrl>
+    
+    <!--指定存储库的URL-->
+    <RepositoryUrl></RepositoryUrl>
+  
+  </PropertyGroup>
+</Project>

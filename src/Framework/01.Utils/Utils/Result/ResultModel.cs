@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 
+using System.Threading.Tasks;
+
 namespace Wyn.Utils.Result
 {
     /// <summary>
@@ -64,18 +66,25 @@ namespace Wyn.Utils.Result
         /// </summary>
         /// <param name="data">返回数据</param>
         /// <returns></returns>
-        public static IResultModel Success<T>(T data = default(T))
-        {
-            return new ResultModel<T>().Success(data);
-        }
+        public static IResultModel Success<T>(T data = default(T)) => new ResultModel<T>().Success(data);
 
         /// <summary>
         /// 成功
         /// </summary>
         /// <returns></returns>
-        public static IResultModel Success()
+        public static IResultModel Success() => Success<string>();
+
+        /// <summary>
+        /// 成功
+        /// </summary>
+        /// <param name="task">任务</param>
+        /// <returns></returns>
+        public static async Task<IResultModel> SuccessAsync<T>(Task<T> task = default)
         {
-            return Success<string>();
+            if (task != null)
+                return new ResultModel<T>().Success(await task);
+
+            return new ResultModel<T>();
         }
 
         /// <summary>
@@ -83,39 +92,27 @@ namespace Wyn.Utils.Result
         /// </summary>
         /// <param name="error">错误信息</param>
         /// <returns></returns>
-        public static IResultModel Failed<T>(string error = null)
-        {
-            return new ResultModel<T>().Failed(error ?? "failed");
-        }
+        public static IResultModel Failed<T>(string error = null) => new ResultModel<T>().Failed(error ?? "failed");
 
         /// <summary>
         /// 失败
         /// </summary>
         /// <returns></returns>
-        public static IResultModel Failed(string error = null)
-        {
-            return Failed<string>(error);
-        }
+        public static IResultModel Failed(string error = null) => Failed<string>(error);
 
         /// <summary>
         /// 根据布尔值返回结果
         /// </summary>
         /// <param name="success"></param>
         /// <returns></returns>
-        public static IResultModel Result<T>(bool success)
-        {
-            return success ? Success<T>() : Failed<T>();
-        }
+        public static IResultModel Result<T>(bool success) => success ? Success<T>() : Failed<T>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="success"></param>
         /// <returns></returns>
-        public static IResultModel Result(bool success)
-        {
-            return success ? Success() : Failed();
-        }
+        public static IResultModel Result(bool success) => success ? Success() : Failed();
 
         /// <summary>
         /// 数据已存在

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+
+using Data.Core;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +16,9 @@ using Wyn.Auth.Core;
 using Wyn.Auth.Core.Extensions;
 using Wyn.Cache;
 using Wyn.Cache.Core.Extensions;
+using Wyn.Data.Abstractions.Adapter;
 using Wyn.Data.Core;
+using Wyn.Data.Core.Extensions;
 using Wyn.Host.Web.Swagger;
 using Wyn.Host.Web.Swagger.Conventions;
 using Wyn.Mapper.Core;
@@ -199,6 +204,16 @@ namespace Wyn.Host.Web
                 var dbBuilder = services.AddDb(dbContextType, opt =>
                 {
                     opt.Provider = dbOptions.Provider;
+
+                    // Sqlite数据库自动创建数据库文件
+                    if (dbOptions.ConnectionString.IsNull() && dbOptions.Provider == DbProvider.Sqlite)
+                    {
+                        string dbFilePath = Path.Combine(AppContext.BaseDirectory, "db");
+                        if (!Directory.Exists(dbFilePath))
+                            Directory.CreateDirectory(dbFilePath);
+                        dbOptions.ConnectionString = $"Data Source={dbFilePath}/{module.Code}.db;Mode=ReadWriteCreate";
+                    }
+
                     opt.ConnectionString = dbOptions.ConnectionString;
                     opt.Log = dbOptions.Log;
                     opt.TableNamePrefix = dbOptions.TableNamePrefix;

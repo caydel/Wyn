@@ -24,5 +24,16 @@ namespace Wyn.Utils.Result
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public object Data { get; set; }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="rows">数据集</param>
+        /// <param name="total">总数</param>
+        public QueryResultModel(IList<T> rows, long total)
+        {
+            Rows = rows;
+            Total = total;
+        }
     }
 }

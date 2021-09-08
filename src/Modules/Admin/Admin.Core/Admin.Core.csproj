@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\02.Module\Module.Abstractions\Module.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Framework\03.Mapper\Mapper.Abstractions\Mapper.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Framework\04.Cache\Cache.Abstractions\Cache.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Framework\06.Auth\Auth.Abstractions\Auth.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Framework\99.Data\Data.Abstractions\Data.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Framework\99.Data\Data.Core\Data.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -73,6 +73,8 @@ namespace Wyn.Module.Core
 
             LoadEnums(moduleDescriptor);
 
+            LoadDbInitFilePath(modulePath, moduleDescriptor);
+
             Add(moduleDescriptor);
         }
 
@@ -135,6 +137,18 @@ namespace Wyn.Module.Core
 
                 descriptor.EnumDescriptors.Add(enumDescriptor);
             }
+        }
+
+        /// <summary>
+        /// 加载数据库初始化数据文件路径
+        /// </summary>
+        private void LoadDbInitFilePath(string modulePath, ModuleDescriptor descriptor)
+        {
+            var filePath = Path.Combine(modulePath, Constants.DB_INIT_FILE_NAME);
+            if (!File.Exists(filePath))
+                return;
+
+            descriptor.DbInitFilePath = filePath;
         }
     }
 }

@@ -19,14 +19,13 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\01.Utils\Utils\Utils.csproj" />
-    <ProjectReference Include="..\..\02.Module\Module.Abstractions\Module.Abstractions.csproj" />
     <ProjectReference Include="..\..\02.Module\Module.Core\Module.Core.csproj" />
     <ProjectReference Include="..\..\02.Module\Module.Web\Module.Web.csproj" />
-    <ProjectReference Include="..\..\03.Mapper\Mapper.Abstractions\Mapper.Abstractions.csproj" />
     <ProjectReference Include="..\..\03.Mapper\Mapper.Core\Mapper.Core.csproj" />
     <ProjectReference Include="..\..\04.Cache\Cache.Core\Cache.Core.csproj" />
     <ProjectReference Include="..\..\05.MQ\MQ.Core\MQ.Core.csproj" />
     <ProjectReference Include="..\..\06.Auth\Auth.Core\Auth.Core.csproj" />
+    <ProjectReference Include="..\..\99.Data\Data.Core\Data.Core.csproj" />
   </ItemGroup>
 
 </Project>

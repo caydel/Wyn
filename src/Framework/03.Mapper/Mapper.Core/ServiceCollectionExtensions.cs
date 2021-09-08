@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 
 using Wyn.Module.Abstractions;
-using Wyn.Mapper.Abstractions.Annotations;
+using Wyn.Utils.Annotations;
 
 using IMapper = Wyn.Mapper.Abstractions.IMapper;
 

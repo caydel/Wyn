@@ -53,6 +53,7 @@ namespace Wyn.Utils.Extensions
                 return outResult;
 
             return null;
+
         }
 
         /// <summary>
@@ -276,7 +277,7 @@ namespace Wyn.Utils.Extensions
         /// </summary>
         /// <param name="str">指定字符串</param>
         /// <returns>真或假</returns>
-        public static bool IsInt(this string str) => !string.IsNullOrEmpty(str) && Regex.IsMatch(str, "^-?\\d+$");
+        public static bool IsInt(this string str) => str.NotNull() && Regex.IsMatch(str, "^-?\\d+$");
 
         /// <summary>
         /// 判断指定字符串是否为安全SQL语句
@@ -375,22 +376,30 @@ namespace Wyn.Utils.Extensions
         /// 对指定字符串进行Base64位编码
         /// </summary>
         /// <param name="str">指定字符串</param>
+        /// <param name="encoding">指定编码格式</param>
         /// <returns>编码后的Base64字符串</returns>
-        public static string EncodeBase64(this string str)
+        public static string EncodeBase64(this string str, Encoding encoding = null)
         {
-            var bytes = Encoding.UTF8.GetBytes(str);
-            return Convert.ToBase64String(bytes);
+            if (str.IsNull())
+                return null;
+
+            encoding ??= Encoding.UTF8;
+            return Convert.ToBase64String(encoding.GetBytes(str));
         }
 
         /// <summary>
         /// 对指定字符串进行Base64位解码
         /// </summary>
         /// <param name="str">指定字符串</param>
+        /// <param name="encoding">指定编码格式</param>
         /// <returns>解码后的字符串</returns>
-        public static string DecodeBase64(this string str)
+        public static string DecodeBase64(this string str, Encoding encoding = null)
         {
-            var bytes = Convert.FromBase64String(str);
-            return Encoding.UTF8.GetString(bytes);
+            if (str.IsNull()) 
+                return null;
+
+            encoding ??= Encoding.UTF8;
+            return encoding.GetString(Convert.FromBase64String(str));
         }
 
         /// <summary>
@@ -423,12 +432,12 @@ namespace Wyn.Utils.Extensions
         /// 对指定字符串进行URL解码
         /// </summary>
         /// <param name="str">指定字符串</param>
-        /// <param name="e">编码</param>
+        /// <param name="encoding">编码格式</param>
         /// <returns>解码后的字符串</returns>
-        public static string UrlDecode(this string str, Encoding e = null)
+        public static string UrlDecode(this string str, Encoding encoding = null)
         {
-            e ??= Encoding.UTF8;
-            return HttpUtility.UrlDecode(str, e);
+            encoding ??= Encoding.UTF8;
+            return HttpUtility.UrlDecode(str, encoding);
         }
 
         #endregion
@@ -506,7 +515,7 @@ namespace Wyn.Utils.Extensions
         /// <param name="replacement">替换为该字符</param>
         /// <returns>替换后的字符串</returns>
         public static string ReplaceWhiteSpace(this string str, string replacement = "") =>
-            string.IsNullOrEmpty(str) ? null : Regex.Replace(str, "\\s", replacement, RegexOptions.Compiled);
+            str.IsNull() ? null : Regex.Replace(str, "\\s", replacement, RegexOptions.Compiled);
 
 
         /// <summary>
@@ -514,7 +523,7 @@ namespace Wyn.Utils.Extensions
         /// </summary>
         /// <param name="str">指定字符串</param>
         /// <returns>指定字符串的真实长度</returns>
-        public static int Length(this string str) => string.IsNullOrEmpty(str) ? 0 : Encoding.UTF8.GetBytes(str).Length;
+        public static int Length(this string str) => str.IsNull() ? 0 : Encoding.UTF8.GetBytes(str).Length;
 
 
         /// <summary>
@@ -525,11 +534,11 @@ namespace Wyn.Utils.Extensions
         /// <returns>默认非空字符串。若无可选项则返回string.Empty</returns>
         public static string DefaultStringIfEmpty(this string str, params string[] args)
         {
-            if (!string.IsNullOrEmpty(str)) return str;
+            if (str.NotNull()) return str;
 
             foreach (var item in args)
             {
-                if (!string.IsNullOrEmpty(item) && !string.IsNullOrEmpty(item.Trim()))
+                if (item.NotNull() && item.Trim().NotNull())
                 {
                     return item;
                 }
@@ -546,28 +555,26 @@ namespace Wyn.Utils.Extensions
         public static bool EqualsIgnoreCase(this string str, string value) => str.Equals(value, StringComparison.OrdinalIgnoreCase);
 
         /// <summary>
+        /// 匹配字符串结尾，忽略大小写
+        /// </summary>
+        /// <param name="str">指定字符串</param>
+        /// <param name="value">对比的字符串</param>
+        /// <returns>真或假</returns>
+        public static bool EndsWithIgnoreCase(this string str, string value) => str.EndsWith(value, StringComparison.OrdinalIgnoreCase);
+
+        /// <summary>
         /// 首字母转小写
         /// </summary>
         /// <param name="str">指定字符串</param>
         /// <returns>转换后的字符串</returns>
-        public static string FirstCharToLower(this string str)
-        {
-            if (string.IsNullOrEmpty(str)) return str;
-
-            return str.First().ToString().ToLower() + str[1..];
-        }
+        public static string FirstCharToLower(this string str) => str.IsNull() ? str : str.First().ToString().ToLower() + str[1..];
 
         /// <summary>
         /// 首字母转大写
         /// </summary>
         /// <param name="str">指定字符串</param>
         /// <returns>转换后的字符串</returns>
-        public static string FirstCharToUpper(this string str)
-        {
-            if (string.IsNullOrEmpty(str)) return str;
-
-            return str.First().ToString().ToUpper() + str[1..];
-        }
+        public static string FirstCharToUpper(this string str) => str.IsNull() ? str : str.First().ToString().ToUpper() + str[1..];
 
         /// <summary>
         /// 字符串转换为文件名
@@ -599,11 +606,11 @@ namespace Wyn.Utils.Extensions
         {
             if (str.IsNull()) return string.Empty;
 
-            //删除脚本和嵌入式CSS   
+            // 删除脚本和嵌入式CSS   
             str = Regex.Replace(str, @"<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
             str = Regex.Replace(str, @"<style[^>]*?>.*?</style>", "", RegexOptions.IgnoreCase);
 
-            //删除HTML   
+            // 删除HTML   
             var regex = new Regex("<.+?>", RegexOptions.IgnoreCase);
             str = regex.Replace(str, "");
             str = Regex.Replace(str, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);

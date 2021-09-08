@@ -44,7 +44,7 @@ namespace Wyn.Utils.Helpers
         /// </summary>
         /// <param name="guidType"></param>
         /// <returns></returns>
-        public static Guid NewSequentialGuid(SequentialGuidType guidType)
+        public static Guid Create(SequentialGuidType guidType)
         {
             var randomBytes = new byte[10];
             Rng.GetBytes(randomBytes);

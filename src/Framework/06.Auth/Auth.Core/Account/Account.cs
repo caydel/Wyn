@@ -32,13 +32,13 @@ namespace Wyn.Auth.Core
         /// <summary>
         /// 账户编号
         /// </summary>
-        public Guid AccountId
+        public Guid Id
         {
             get
             {
-                var accountId = _contextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.ACCOUNT_ID);
+                var     id = _contextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.ACCOUNT_ID);
 
-                return accountId != null && accountId.Value.NotNull() ? new Guid(accountId.Value) : Guid.Empty;
+                return id != null && id.Value.NotNull() ? new Guid(id.Value) : Guid.Empty;
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Wyn.Mapper.Abstractions.Annotations
+namespace Wyn.Utils.Annotations
 {
     /// <summary>
     /// 映射

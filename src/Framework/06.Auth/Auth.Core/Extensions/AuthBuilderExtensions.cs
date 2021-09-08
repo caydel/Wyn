@@ -30,7 +30,10 @@ namespace Wyn.Auth.Core.Extensions
             services.AddSingleton(jwtOptions);
 
             // 添加凭证构造器
-            services.AddScoped<ICredentialBuilder, JwtCredentialBuilder>();
+            //services.AddScoped<ICredentialBuilder, JwtCredentialBuilder>();
+            services.AddTransient<ICredentialBuilder, JwtCredentialBuilder>();
+
+
 
             // 添加身份认证服务
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
