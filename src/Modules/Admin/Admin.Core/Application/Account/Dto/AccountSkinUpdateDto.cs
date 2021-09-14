@@ -4,7 +4,7 @@ using AutoMapper.Configuration.Annotations;
 
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.Account.Dto
+namespace Wyn.Mod.Admin.Core.Application.Account.Dto
 {
     /// <summary>
     /// 账户皮肤更新

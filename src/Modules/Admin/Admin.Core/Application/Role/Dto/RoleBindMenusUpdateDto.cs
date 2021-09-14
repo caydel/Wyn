@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.Menu;
 
-namespace Wyn.Admin.Core.Application.Role.Dto
+namespace Wyn.Mod.Admin.Core.Application.Role.Dto
 {
     /// <summary>
     /// 角色绑定菜单更新

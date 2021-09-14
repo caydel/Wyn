@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 using Wyn.Cache.Abstractions;
 using Wyn.Data.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.Role.Dto;
-using Wyn.Admin.Core.Domain.Account;
-using Wyn.Admin.Core.Domain.MenuGroup;
-using Wyn.Admin.Core.Domain.Role;
-using Wyn.Admin.Core.Domain.RoleButton;
-using Wyn.Admin.Core.Domain.RoleMenu;
-using Wyn.Admin.Core.Domain.RolePermission;
-using Wyn.Admin.Core.Infrastructure;
+using Wyn.Mod.Admin.Core.Application.Role.Dto;
+using Wyn.Mod.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Domain.MenuGroup;
+using Wyn.Mod.Admin.Core.Domain.Role;
+using Wyn.Mod.Admin.Core.Domain.RoleButton;
+using Wyn.Mod.Admin.Core.Domain.RoleMenu;
+using Wyn.Mod.Admin.Core.Domain.RolePermission;
+using Wyn.Mod.Admin.Core.Infrastructure;
 using Wyn.Mapper.Abstractions;
 using Wyn.Utils.Result;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Application.Role
+namespace Wyn.Mod.Admin.Core.Application.Role
 {
     public class RoleService : IRoleService
     {

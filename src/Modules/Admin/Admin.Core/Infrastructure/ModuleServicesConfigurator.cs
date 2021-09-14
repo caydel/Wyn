@@ -4,7 +4,7 @@ using Wyn.Auth.Abstractions;
 using Wyn.Auth.Jwt;
 using Wyn.Module.Abstractions;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     public class ModuleServicesConfigurator : IModuleServicesConfigurator
     {

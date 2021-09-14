@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Wyn.Auth.Abstractions;
 using Wyn.Auth.Jwt;
 using Wyn.Cache.Abstractions;
-using Wyn.Admin.Core.Domain.JwtAuthInfo;
+using Wyn.Mod.Admin.Core.Domain.JwtAuthInfo;
 using Wyn.Auth.Abstractions.Options;
 using Wyn.Utils.Result;
 
 using ClaimTypes = Wyn.Auth.Abstractions.ClaimTypes;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     public class DefaultJwtTokenStorageProvider : IJwtTokenStorageProvider
     {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Wyn.Admin.Core.Domain.Dict;
+using Wyn.Mod.Admin.Core.Domain.Dict;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.Dict.Dto
+namespace Wyn.Mod.Admin.Core.Application.Dict.Dto
 {
     [ObjectMap(typeof(DictEntity))]
     public class DictAddDto

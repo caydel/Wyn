@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.Dict.Dto;
+using Wyn.Mod.Admin.Core.Application.Dict.Dto;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Dict
+namespace Wyn.Mod.Admin.Core.Application.Dict
 {
     /// <summary>
     /// 字典服务

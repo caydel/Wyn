@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions;
 
-namespace Wyn.Admin.Core.Domain.RolePermission
+namespace Wyn.Mod.Admin.Core.Domain.RolePermission
 {
     /// <summary>
     /// 角色权限绑定关系仓储

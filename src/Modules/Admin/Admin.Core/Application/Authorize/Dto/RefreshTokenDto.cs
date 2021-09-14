@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 using Newtonsoft.Json;
 
-namespace Wyn.Admin.Core.Application.Authorize.Dto
+namespace Wyn.Mod.Admin.Core.Application.Authorize.Dto
 {
     /// <summary>
     /// 刷新令牌

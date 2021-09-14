@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.MenuGroup.Dto;
+using Wyn.Mod.Admin.Core.Application.MenuGroup.Dto;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.MenuGroup
+namespace Wyn.Mod.Admin.Core.Application.MenuGroup
 {
     /// <summary>
     /// 菜单分组服务接口

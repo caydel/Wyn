@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.Menu;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.Menu.Dto
+namespace Wyn.Mod.Admin.Core.Application.Menu.Dto
 {
     /// <summary>
     /// 添加菜单

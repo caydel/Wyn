@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Wyn.Data.Abstractions;
 
-namespace Wyn.Admin.Core.Domain.Account
+namespace Wyn.Mod.Admin.Core.Domain.Account
 {
     /// <summary>
     /// 账户仓储接口

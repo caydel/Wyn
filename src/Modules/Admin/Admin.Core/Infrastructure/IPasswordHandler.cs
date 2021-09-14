@@ -1,4 +1,4 @@
-﻿namespace Wyn.Admin.Core.Infrastructure
+﻿namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 密码处理器接口

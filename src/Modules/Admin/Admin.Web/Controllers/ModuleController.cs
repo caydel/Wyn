@@ -4,7 +4,7 @@ using Wyn.Auth.Abstractions;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("模块管理")]
     public class ModuleController : BaseController

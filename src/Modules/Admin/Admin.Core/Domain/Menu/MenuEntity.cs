@@ -1,7 +1,7 @@
 ﻿using Wyn.Data.Abstractions.Annotations;
 using Wyn.Data.Abstractions.Entities;
 
-namespace Wyn.Admin.Core.Domain.Menu
+namespace Wyn.Mod.Admin.Core.Domain.Menu
 {
     /// <summary>
     /// 菜单

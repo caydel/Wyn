@@ -1,7 +1,7 @@
 ﻿using Wyn.Data.Core.Repository;
-using Wyn.Admin.Core.Domain.RolePermission;
+using Wyn.Mod.Admin.Core.Domain.RolePermission;
 
-namespace Wyn.Admin.Core.Infrastructure.Repositories
+namespace Wyn.Mod.Admin.Core.Infrastructure.Repositories
 {
     public class RolePermissionRepository : RepositoryAbstract<RolePermissionEntity>, IRolePermissionRepository
     {

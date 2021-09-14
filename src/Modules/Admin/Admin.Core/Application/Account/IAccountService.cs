@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.Account.Dto;
+using Wyn.Mod.Admin.Core.Application.Account.Dto;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Account
+namespace Wyn.Mod.Admin.Core.Application.Account
 {
     public interface IAccountService
     {

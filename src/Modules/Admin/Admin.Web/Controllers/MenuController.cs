@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Wyn.Admin.Core.Application.Menu;
-using Wyn.Admin.Core.Application.Menu.Dto;
-using Wyn.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Application.Menu;
+using Wyn.Mod.Admin.Core.Application.Menu.Dto;
+using Wyn.Mod.Admin.Core.Domain.Menu;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("菜单管理")]
     public class MenuController : BaseController

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Wyn.Admin.Core.Application.Authorize.Dto
+namespace Wyn.Mod.Admin.Core.Application.Authorize.Dto
 {
     /// <summary>
     /// 登录

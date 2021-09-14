@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Wyn.Auth.Abstractions;
 using Wyn.Auth.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.Authorize;
-using Wyn.Admin.Core.Application.Authorize.Dto;
-using Wyn.Admin.Core.Infrastructure;
+using Wyn.Mod.Admin.Core.Application.Authorize;
+using Wyn.Mod.Admin.Core.Application.Authorize.Dto;
+using Wyn.Mod.Admin.Core.Infrastructure;
 using Wyn.Utils.Resolver;
 using Wyn.Utils.Result;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     /// <summary>
     /// 身份认证

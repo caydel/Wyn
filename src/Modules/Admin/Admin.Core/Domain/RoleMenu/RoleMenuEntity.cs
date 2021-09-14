@@ -1,7 +1,7 @@
 ﻿using Wyn.Data.Abstractions.Entities;
-using Wyn.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.Menu;
 
-namespace Wyn.Admin.Core.Domain.RoleMenu
+namespace Wyn.Mod.Admin.Core.Domain.RoleMenu
 {
     /// <summary>
     /// 角色菜单绑定信息

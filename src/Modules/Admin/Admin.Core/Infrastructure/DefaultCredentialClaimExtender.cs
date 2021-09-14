@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     public class DefaultCredentialClaimExtender : ICredentialClaimExtender
     {

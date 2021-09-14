@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Wyn.Auth.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.Role;
-using Wyn.Admin.Core.Application.Role.Dto;
+using Wyn.Mod.Admin.Core.Application.Role;
+using Wyn.Mod.Admin.Core.Application.Role.Dto;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("角色管理")]
     public class RoleController : BaseController

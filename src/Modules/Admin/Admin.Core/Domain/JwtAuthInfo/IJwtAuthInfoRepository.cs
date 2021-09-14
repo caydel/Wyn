@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions;
 
-namespace Wyn.Admin.Core.Domain.JwtAuthInfo
+namespace Wyn.Mod.Admin.Core.Domain.JwtAuthInfo
 {
     /// <summary>
     /// JWT认证信息仓储

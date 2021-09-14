@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Core;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 权限管理模块数据库上下文

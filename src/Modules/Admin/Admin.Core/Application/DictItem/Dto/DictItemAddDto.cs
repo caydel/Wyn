@@ -1,7 +1,7 @@
-﻿using Wyn.Admin.Core.Domain.DictItem;
+﻿using Wyn.Mod.Admin.Core.Domain.DictItem;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.DictItem.Dto
+namespace Wyn.Mod.Admin.Core.Application.DictItem.Dto
 {
     [ObjectMap(typeof(DictItemEntity))]
     public class DictItemAddDto

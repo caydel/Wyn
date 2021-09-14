@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.Dict.Dto;
-using Wyn.Admin.Core.Application.Dict.Vo;
-using Wyn.Admin.Core.Domain.Dict;
-using Wyn.Admin.Core.Domain.DictGroup;
-using Wyn.Admin.Core.Domain.DictItem;
-using Wyn.Admin.Core.Infrastructure;
+using Wyn.Mod.Admin.Core.Application.Dict.Dto;
+using Wyn.Mod.Admin.Core.Application.Dict.Vo;
+using Wyn.Mod.Admin.Core.Domain.Dict;
+using Wyn.Mod.Admin.Core.Domain.DictGroup;
+using Wyn.Mod.Admin.Core.Domain.DictItem;
+using Wyn.Mod.Admin.Core.Infrastructure;
 using Wyn.Cache.Abstractions;
 using Wyn.Data.Abstractions.Annotations;
 using Wyn.Mapper.Abstractions;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Dict
+namespace Wyn.Mod.Admin.Core.Application.Dict
 {
     public class DictService : IDictService
     {

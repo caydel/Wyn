@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Wyn.Admin.Core.Application.Authorize.Vo;
-using Wyn.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Application.Authorize.Vo;
+using Wyn.Mod.Admin.Core.Domain.Account;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 账户资料解析器

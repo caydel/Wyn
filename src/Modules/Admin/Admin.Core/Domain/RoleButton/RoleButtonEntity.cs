@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions.Entities;
 
-namespace Wyn.Admin.Core.Domain.RoleButton
+namespace Wyn.Mod.Admin.Core.Domain.RoleButton
 {
     /// <summary>
     /// 角色按钮绑定关系

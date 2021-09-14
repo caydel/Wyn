@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.DictGroup;
+using Wyn.Mod.Admin.Core.Domain.DictGroup;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.DictGroup.Dto
+namespace Wyn.Mod.Admin.Core.Application.DictGroup.Dto
 {
     [ObjectMap(typeof(DictGroupEntity), true)]
     public class DictGroupUpdateDto : DictGroupAddDto

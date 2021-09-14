@@ -5,7 +5,7 @@ using Wyn.Auth.Abstractions;
 using Wyn.Auth.Abstractions.Descriptor;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 默认权限验证处理器

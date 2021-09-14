@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Wyn.Cache.Abstractions;
-using Wyn.Admin.Core.Domain.Account;
-using Wyn.Admin.Core.Domain.RolePermission;
+using Wyn.Mod.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Domain.RolePermission;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 默认账户权限解析器

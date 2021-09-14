@@ -12,7 +12,7 @@ using SixLabors.ImageSharp.Processing;
 using Wyn.Utils.Result;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 默认验证码提供器

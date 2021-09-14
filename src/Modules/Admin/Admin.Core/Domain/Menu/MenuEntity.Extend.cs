@@ -3,7 +3,7 @@
 using Wyn.Utils.Annotations;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Domain.Menu
+namespace Wyn.Mod.Admin.Core.Domain.Menu
 {
     public partial class MenuEntity
     {

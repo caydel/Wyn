@@ -1,7 +1,7 @@
 ﻿using Wyn.Data.Core.Repository;
-using Wyn.Admin.Core.Domain.Dict;
+using Wyn.Mod.Admin.Core.Domain.Dict;
 
-namespace Wyn.Admin.Core.Infrastructure.Repositories
+namespace Wyn.Mod.Admin.Core.Infrastructure.Repositories
 {
     public class DictRepository : RepositoryAbstract<DictEntity>, IDictRepository
     {

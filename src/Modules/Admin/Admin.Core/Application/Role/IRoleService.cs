@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.Role.Dto;
+using Wyn.Mod.Admin.Core.Application.Role.Dto;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Role
+namespace Wyn.Mod.Admin.Core.Application.Role
 {
     /// <summary>
     /// 角色服务

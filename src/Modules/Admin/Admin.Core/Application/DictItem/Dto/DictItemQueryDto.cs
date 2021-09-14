@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions.Query;
 
-namespace Wyn.Admin.Core.Application.DictItem.Dto
+namespace Wyn.Mod.Admin.Core.Application.DictItem.Dto
 {
     public class DictItemQueryDto : QueryDto
     {

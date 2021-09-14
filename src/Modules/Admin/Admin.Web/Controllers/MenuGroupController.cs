@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Wyn.Auth.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.MenuGroup;
-using Wyn.Admin.Core.Application.MenuGroup.Dto;
+using Wyn.Mod.Admin.Core.Application.MenuGroup;
+using Wyn.Mod.Admin.Core.Application.MenuGroup.Dto;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("菜单分组")]
     public class MenuGroupController : BaseController

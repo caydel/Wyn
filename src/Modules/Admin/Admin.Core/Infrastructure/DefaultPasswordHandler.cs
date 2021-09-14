@@ -1,7 +1,7 @@
 ﻿using System;
 using Wyn.Utils.Encrypt;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     public class DefaultPasswordHandler : IPasswordHandler
     {

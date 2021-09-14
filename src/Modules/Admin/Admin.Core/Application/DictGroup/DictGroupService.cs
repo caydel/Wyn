@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.DictGroup.Dto;
-using Wyn.Admin.Core.Domain.Dict;
-using Wyn.Admin.Core.Domain.DictGroup;
+using Wyn.Mod.Admin.Core.Application.DictGroup.Dto;
+using Wyn.Mod.Admin.Core.Domain.Dict;
+using Wyn.Mod.Admin.Core.Domain.DictGroup;
 using Wyn.Mapper.Abstractions;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.DictGroup
+namespace Wyn.Mod.Admin.Core.Application.DictGroup
 {
     public class DictGroupService : IDictGroupService
     {

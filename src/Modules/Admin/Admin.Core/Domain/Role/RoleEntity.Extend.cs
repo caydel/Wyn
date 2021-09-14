@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions.Annotations;
 
-namespace Wyn.Admin.Core.Domain.Role
+namespace Wyn.Mod.Admin.Core.Domain.Role
 {
     public partial class RoleEntity
     {

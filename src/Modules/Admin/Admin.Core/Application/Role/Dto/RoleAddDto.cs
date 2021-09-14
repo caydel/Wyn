@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.Role;
+using Wyn.Mod.Admin.Core.Domain.Role;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.Role.Dto
+namespace Wyn.Mod.Admin.Core.Application.Role.Dto
 {
     /// <summary>
     /// 角色添加

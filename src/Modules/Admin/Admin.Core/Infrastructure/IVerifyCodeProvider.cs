@@ -2,7 +2,7 @@
 
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 验证码提供器

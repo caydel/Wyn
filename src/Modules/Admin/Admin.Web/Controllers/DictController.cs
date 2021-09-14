@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Wyn.Auth.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.Dict;
-using Wyn.Admin.Core.Application.Dict.Dto;
+using Wyn.Mod.Admin.Core.Application.Dict;
+using Wyn.Mod.Admin.Core.Application.Dict.Dto;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("数据字典")]
     public class DictController : BaseController

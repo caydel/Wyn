@@ -2,16 +2,16 @@
 using System.Threading.Tasks;
 
 using Wyn.Data.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.MenuGroup.Dto;
-using Wyn.Admin.Core.Domain.Menu;
-using Wyn.Admin.Core.Domain.MenuGroup;
-using Wyn.Admin.Core.Domain.Role;
-using Wyn.Admin.Core.Domain.RoleMenu;
-using Wyn.Admin.Core.Domain.RolePermission;
+using Wyn.Mod.Admin.Core.Application.MenuGroup.Dto;
+using Wyn.Mod.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.MenuGroup;
+using Wyn.Mod.Admin.Core.Domain.Role;
+using Wyn.Mod.Admin.Core.Domain.RoleMenu;
+using Wyn.Mod.Admin.Core.Domain.RolePermission;
 using Wyn.Mapper.Abstractions;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.MenuGroup
+namespace Wyn.Mod.Admin.Core.Application.MenuGroup
 {
     public class MenuGroupService : IMenuGroupService
     {

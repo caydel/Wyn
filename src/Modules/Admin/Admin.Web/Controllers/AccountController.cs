@@ -7,12 +7,12 @@ using Microsoft.Extensions.Options;
 using Wyn.Auth.Abstractions;
 using Wyn.Auth.Abstractions.Annotations;
 using Wyn.Auth.Abstractions.Options;
-using Wyn.Admin.Core.Application.Account;
-using Wyn.Admin.Core.Application.Account.Dto;
+using Wyn.Mod.Admin.Core.Application.Account;
+using Wyn.Mod.Admin.Core.Application.Account.Dto;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("账户管理")]
     public class AccountController : BaseController

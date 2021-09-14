@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions;
 
-namespace Wyn.Admin.Core.Domain.Role
+namespace Wyn.Mod.Admin.Core.Domain.Role
 {
     /// <summary>
     /// 角色仓储

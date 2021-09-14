@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions.Query;
 
-namespace Wyn.Admin.Core.Application.Menu.Dto
+namespace Wyn.Mod.Admin.Core.Application.Menu.Dto
 {
     public class MenuQueryDto : QueryDto
     {

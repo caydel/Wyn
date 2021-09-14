@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions;
 
-namespace Wyn.Admin.Core.Domain.DictItem
+namespace Wyn.Mod.Admin.Core.Domain.DictItem
 {
     /// <summary>
     /// 数据字典项仓储

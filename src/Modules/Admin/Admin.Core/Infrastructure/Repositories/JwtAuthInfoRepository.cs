@@ -1,7 +1,7 @@
 ﻿using Wyn.Data.Core.Repository;
-using Wyn.Admin.Core.Domain.JwtAuthInfo;
+using Wyn.Mod.Admin.Core.Domain.JwtAuthInfo;
 
-namespace Wyn.Admin.Core.Infrastructure.Repositories
+namespace Wyn.Mod.Admin.Core.Infrastructure.Repositories
 {
     public class JwtAuthInfoRepository : RepositoryAbstract<JwtAuthInfoEntity>, IJwtAuthInfoRepository
     {

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.MenuGroup;
+using Wyn.Mod.Admin.Core.Domain.MenuGroup;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.MenuGroup.Dto
+namespace Wyn.Mod.Admin.Core.Application.MenuGroup.Dto
 {
     [ObjectMap(typeof(MenuGroupEntity), true)]
     public class MenuGroupUpdateDto : MenuGroupAddDto

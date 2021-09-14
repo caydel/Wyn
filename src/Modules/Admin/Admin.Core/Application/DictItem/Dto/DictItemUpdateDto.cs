@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.DictItem;
+using Wyn.Mod.Admin.Core.Domain.DictItem;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.DictItem.Dto
+namespace Wyn.Mod.Admin.Core.Application.DictItem.Dto
 {
     [ObjectMap(typeof(DictItemEntity), true)]
     public class DictItemUpdateDto : DictItemAddDto

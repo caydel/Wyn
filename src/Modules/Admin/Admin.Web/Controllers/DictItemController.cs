@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Wyn.Admin.Core.Application.DictItem;
-using Wyn.Admin.Core.Application.DictItem.Dto;
+using Wyn.Mod.Admin.Core.Application.DictItem;
+using Wyn.Mod.Admin.Core.Application.DictItem.Dto;
 using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("数据字典项")]
     public class DictItemController : BaseController

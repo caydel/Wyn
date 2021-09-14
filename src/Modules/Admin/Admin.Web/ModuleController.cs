@@ -2,7 +2,7 @@
 
 using Wyn.Module.Abstractions;
 
-namespace Wyn.Admin.Web
+namespace Wyn.Mod.Admin.Web
 {
     [Area("Admin")]
     public abstract class BaseController : ControllerAbstract

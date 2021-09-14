@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Wyn.Admin.Core.Domain.Menu
+namespace Wyn.Mod.Admin.Core.Domain.Menu
 {
     /// <summary>
     /// 菜单类型

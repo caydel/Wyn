@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.Authorize.Dto;
+using Wyn.Mod.Admin.Core.Application.Authorize.Dto;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Authorize
+namespace Wyn.Mod.Admin.Core.Application.Authorize
 {
     /// <summary>
     /// 认证服务

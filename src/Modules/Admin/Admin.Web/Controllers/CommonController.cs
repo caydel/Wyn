@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using Wyn.Utils.Result;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Web.Controllers
+namespace Wyn.Mod.Admin.Web.Controllers
 {
     [SwaggerTag("通用功能")]
     [AllowWhenAuthenticated]

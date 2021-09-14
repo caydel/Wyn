@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-using Wyn.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.Menu;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.Authorize.Vo
+namespace Wyn.Mod.Admin.Core.Application.Authorize.Vo
 {
     /// <summary>
     /// 个人信息菜单信息

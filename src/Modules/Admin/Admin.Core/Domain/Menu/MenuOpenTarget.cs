@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Wyn.Admin.Core.Domain.Menu
+namespace Wyn.Mod.Admin.Core.Domain.Menu
 {
     /// <summary>
     /// 菜单打开方式(只针对链接菜单)

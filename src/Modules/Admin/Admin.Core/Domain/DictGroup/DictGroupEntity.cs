@@ -1,7 +1,7 @@
 ﻿using Wyn.Data.Abstractions.Annotations;
 using Wyn.Data.Abstractions.Entities;
 
-namespace Wyn.Admin.Core.Domain.DictGroup
+namespace Wyn.Mod.Admin.Core.Domain.DictGroup
 {
     /// <summary>
     /// 数据字典分组

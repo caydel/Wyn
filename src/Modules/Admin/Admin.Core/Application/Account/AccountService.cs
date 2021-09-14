@@ -4,16 +4,16 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 
 using Wyn.Auth.Abstractions.Options;
-using Wyn.Admin.Core.Application.Account.Dto;
-using Wyn.Admin.Core.Domain.Account;
-using Wyn.Admin.Core.Domain.AccountSkin;
-using Wyn.Admin.Core.Domain.Role;
-using Wyn.Admin.Core.Infrastructure;
+using Wyn.Mod.Admin.Core.Application.Account.Dto;
+using Wyn.Mod.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Domain.AccountSkin;
+using Wyn.Mod.Admin.Core.Domain.Role;
+using Wyn.Mod.Admin.Core.Infrastructure;
 using Wyn.Mapper.Abstractions;
 using Wyn.Utils.Result;
 using Wyn.Utils.Extensions;
 
-namespace Wyn.Admin.Core.Application.Account
+namespace Wyn.Mod.Admin.Core.Application.Account
 {
     public class AccountService : IAccountService
     {

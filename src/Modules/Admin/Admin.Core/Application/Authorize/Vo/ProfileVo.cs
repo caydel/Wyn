@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Wyn.Admin.Core.Application.Authorize.Vo
+namespace Wyn.Mod.Admin.Core.Application.Authorize.Vo
 {
     /// <summary>
     /// 个人信息

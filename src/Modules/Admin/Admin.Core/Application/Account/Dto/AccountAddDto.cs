@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using Wyn.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Domain.Account;
 using Wyn.Utils.Annotations;
 
-namespace Wyn.Admin.Core.Application.Account.Dto
+namespace Wyn.Mod.Admin.Core.Application.Account.Dto
 {
     /// <summary>
     /// 账户新增模型

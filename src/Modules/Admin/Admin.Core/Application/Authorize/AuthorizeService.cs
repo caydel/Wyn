@@ -8,14 +8,14 @@ using Microsoft.Extensions.Options;
 using Wyn.Auth.Abstractions;
 using Wyn.Auth.Abstractions.Options;
 using Wyn.Auth.Jwt;
-using Wyn.Admin.Core.Application.Authorize.Dto;
-using Wyn.Admin.Core.Domain.Account;
-using Wyn.Admin.Core.Infrastructure;
+using Wyn.Mod.Admin.Core.Application.Authorize.Dto;
+using Wyn.Mod.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Infrastructure;
 using Wyn.Utils.Extensions;
 using Wyn.Utils.Result;
 using ClaimTypes = Wyn.Auth.Abstractions.ClaimTypes;
 
-namespace Wyn.Admin.Core.Application.Authorize
+namespace Wyn.Mod.Admin.Core.Application.Authorize
 {
     public class AuthorizeService : IAuthorizeService
     {

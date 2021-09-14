@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Wyn.Admin.Core.Application.Menu.Dto;
-using Wyn.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Application.Menu.Dto;
+using Wyn.Mod.Admin.Core.Domain.Menu;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Menu
+namespace Wyn.Mod.Admin.Core.Application.Menu
 {
     /// <summary>
     /// 菜单服务

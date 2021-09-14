@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Wyn.Admin.Core.Application.Authorize.Vo;
-using Wyn.Admin.Core.Domain.Account;
-using Wyn.Admin.Core.Domain.AccountSkin;
-using Wyn.Admin.Core.Domain.Menu;
-using Wyn.Admin.Core.Domain.RoleButton;
-using Wyn.Admin.Core.Domain.RoleMenu;
+using Wyn.Mod.Admin.Core.Application.Authorize.Vo;
+using Wyn.Mod.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Domain.AccountSkin;
+using Wyn.Mod.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.RoleButton;
+using Wyn.Mod.Admin.Core.Domain.RoleMenu;
 using Wyn.Mapper.Abstractions;
 
-namespace Wyn.Admin.Core.Infrastructure
+namespace Wyn.Mod.Admin.Core.Infrastructure
 {
     /// <summary>
     /// 默认账户资料解析器

@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions.Annotations;
 
-namespace Wyn.Admin.Core.Domain.Account
+namespace Wyn.Mod.Admin.Core.Domain.Account
 {
     public partial class AccountEntity
     {

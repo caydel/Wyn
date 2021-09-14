@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Wyn.Data.Core.Repository;
-using Wyn.Admin.Core.Domain.Account;
+using Wyn.Mod.Admin.Core.Domain.Account;
 
-namespace Wyn.Admin.Core.Infrastructure.Repositories
+namespace Wyn.Mod.Admin.Core.Infrastructure.Repositories
 {
     public class AccountRepository : RepositoryAbstract<AccountEntity>, IAccountRepository
     {

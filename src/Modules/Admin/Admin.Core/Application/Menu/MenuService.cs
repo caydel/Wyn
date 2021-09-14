@@ -3,15 +3,15 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Wyn.Data.Abstractions.Annotations;
-using Wyn.Admin.Core.Application.Menu.Dto;
-using Wyn.Admin.Core.Domain.Menu;
-using Wyn.Admin.Core.Domain.RoleButton;
-using Wyn.Admin.Core.Domain.RoleMenu;
-using Wyn.Admin.Core.Domain.RolePermission;
+using Wyn.Mod.Admin.Core.Application.Menu.Dto;
+using Wyn.Mod.Admin.Core.Domain.Menu;
+using Wyn.Mod.Admin.Core.Domain.RoleButton;
+using Wyn.Mod.Admin.Core.Domain.RoleMenu;
+using Wyn.Mod.Admin.Core.Domain.RolePermission;
 using Wyn.Mapper.Abstractions;
 using Wyn.Utils.Result;
 
-namespace Wyn.Admin.Core.Application.Menu
+namespace Wyn.Mod.Admin.Core.Application.Menu
 {
     public class MenuService : IMenuService
     {

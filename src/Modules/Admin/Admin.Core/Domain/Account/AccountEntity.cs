@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Wyn.Data.Abstractions.Annotations;
 using Wyn.Data.Abstractions.Entities;
 
-namespace Wyn.Admin.Core.Domain.Account
+namespace Wyn.Mod.Admin.Core.Domain.Account
 {
     /// <summary>
     /// 账户信息

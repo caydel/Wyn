@@ -1,6 +1,6 @@
 ﻿using Wyn.Data.Abstractions.Query;
 
-namespace Wyn.Admin.Core.Application.Account.Dto
+namespace Wyn.Mod.Admin.Core.Application.Account.Dto
 {
     public class AccountQueryDto : QueryDto
     {
