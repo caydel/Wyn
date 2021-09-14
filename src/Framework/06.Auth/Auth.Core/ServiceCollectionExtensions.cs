@@ -34,7 +34,7 @@ namespace Wyn.Auth
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Wyn", policy => policy.Requirements.Add(new PermissionRequirement()));
+                options.AddPolicy("WYN", policy => policy.Requirements.Add(new PermissionRequirement()));
             });
 
             // 自定义权限验证处理器

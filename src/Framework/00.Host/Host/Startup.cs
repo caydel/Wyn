@@ -149,31 +149,31 @@ namespace Wyn.Host.Web
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
-            Console.WriteLine(@" ***************************************************************************************************************");
-            Console.WriteLine(@" *                                                                                                             *");
-            Console.WriteLine(@" *                               $$\   $$$$$$$$\ $$\      $$\ $$\   $$\ $$\   $$\                              *");
-            Console.WriteLine(@" *                             $$$$ |  \____$$  |$$$\    $$$ |$$ | $$  |$$ |  $$ |                             *");
-            Console.WriteLine(@" *                             \_$$ |      $$  / $$$$\  $$$$ |$$ |$$  / $$ |  $$ |                             *");
-            Console.WriteLine(@" *                               $$ |     $$  /  $$\$$\$$ $$ |$$$$$  /  $$$$$$$$ |                             *");
-            Console.WriteLine(@" *                               $$ |    $$  /   $$ \$$$  $$ |$$  $$<   $$  __$$ |                             *");
-            Console.WriteLine(@" *                               $$ |   $$  /    $$ |\$  /$$ |$$ |\$$\  $$ |  $$ |                             *");
-            Console.WriteLine(@" *                             $$$$$$\ $$  /     $$ | \_/ $$ |$$ | \$$\ $$ |  $$ |                             *");
-            Console.WriteLine(@" *                             \______|\__/      \__|     \__|\__|  \__|\__|  \__|                             *");
-            Console.WriteLine(@" *                                                                                                             *");
-            Console.WriteLine(@" *                                                                                                             *");
+            Console.WriteLine(@" ******************************************************************************************************");
+            Console.WriteLine(@" *                             .--.      .--.   ____     __ ,---.   .--.                              *");
+            Console.WriteLine(@" *                             |  |_     |  |   \   \   /  /|    \  |  |                              *");
+            Console.WriteLine(@" *                             | _( )_   |  |    \  _. /  ' |  ,  \ |  |                              *");
+            Console.WriteLine(@" *                             |(_ o _)  |  |     _( )_ .'  |  |\_ \|  |                              *");
+            Console.WriteLine(@" *                             | (_,_) \ |  | ___(_ o _)'   |  _( )_\  |                              *");
+            Console.WriteLine(@" *                             |  |/    \|  ||   |(_,_)'    | (_ o _)  |                              *");
+            Console.WriteLine(@" *                             |  '  /\  `  ||   `-'  /     |  (_,_)\  |                              *");
+            Console.WriteLine(@" *                             |    /  \    | \      /      |  |    |  |                              *");
+            Console.WriteLine(@" *                             `---'    `---`  `-..-'       '--'    '--'                              *");
+            Console.WriteLine(@" *                                                                                                    *");
+            Console.WriteLine(@" *                                                                                                    *");
             Console.Write(@" *                                      ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(@"启动成功，欢迎使用 Wyn ~");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(@"                                             *");
-            Console.WriteLine(@" *                                                                                                             *");
+            Console.WriteLine(@"                                      *");
+            Console.WriteLine(@" *                                                                                                    *");
             Console.Write(@" *                                      ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(@"接口地址：" + options.Urls);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(@"                                                *");
-            Console.WriteLine(@" *                                                                                                             *");
-            Console.WriteLine(@" ***************************************************************************************************************");
+            Console.WriteLine(@"                                       *");
+            Console.WriteLine(@" *                                                                                                    *");
+            Console.WriteLine(@" ******************************************************************************************************");
             Console.WriteLine();
         }
     }

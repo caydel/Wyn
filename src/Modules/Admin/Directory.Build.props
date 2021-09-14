@@ -27,10 +27,12 @@
     <!--编译器仅接受包含在所选C#语言规范中的语法-->
     <!--编译器接受最新发布的编译器版本（包括次要版本）中的语法-->
     <LangVersion>Latest</LangVersion>
-    
+
+    <!--禁用隐式命名空间导入，防止与自定义文件冲突-->
+    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 
     <!--根命名空间前缀-->
-    <RootNamespacePrefix>Wyn</RootNamespacePrefix>
+    <RootNamespacePrefix>Wyn.Mod</RootNamespacePrefix>
     
     <!--程序集-->
     <AssemblyName>$(RootNamespacePrefix).$(MSBuildProjectName)</AssemblyName>

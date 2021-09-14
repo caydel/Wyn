@@ -104,7 +104,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Web", "src\Modules\Ad
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8B4E7563-B734-483B-975D-1B6880E16427}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\Modules\Web\Web\Web.csproj", "{84085E0B-9067-49E6-86FD-88CEBD267541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Modules\Web\Web\Web.csproj", "{84085E0B-9067-49E6-86FD-88CEBD267541}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

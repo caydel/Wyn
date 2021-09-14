@@ -10,7 +10,7 @@ namespace Wyn.Module.Abstractions
     /// </summary>
     [Route("api/[area]/[controller]/[action]")]
     [ApiController]
-    [Authorize(Policy = "Wyn")]
+    [Authorize(Policy = "WYN")]
     [ValidateResultFormat]
     public abstract class ControllerAbstract : ControllerBase
     {

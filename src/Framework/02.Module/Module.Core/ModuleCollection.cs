@@ -85,10 +85,10 @@ namespace Wyn.Module.Core
         private void LoadLayerAssemblies(ModuleDescriptor descriptor)
         {
             var layer = descriptor.LayerAssemblies;
-            layer.Core = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.{descriptor.Code}.Core");
-            layer.Web = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.{descriptor.Code}.Web");
-            layer.Api = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.{descriptor.Code}.Api");
-            layer.Client = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.{descriptor.Code}.Client");
+            layer.Core = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Core");
+            layer.Web = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Web");
+            layer.Api = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Api");
+            layer.Client = AssemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Client");
         }
 
         /// <summary>
